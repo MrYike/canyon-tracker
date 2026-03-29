@@ -1,4 +1,3 @@
-import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
@@ -7,13 +6,11 @@ from datetime import datetime
 import time
 
 URL = "https://nsw.rezexpert.com/nswctobookdtm?business_code=500551"
-EMAIL = os.environ.get("CANYON_EMAIL", "James@myadventuregroup.com.au")
-PASSWORD = os.environ.get("CANYON_PASSWORD", "")
+EMAIL = "James@myadventuregroup.com.au"
+PASSWORD = "your_new_password_here"  # ⚠️ update this
 
 options = webdriver.ChromeOptions()
-options.add_argument("--headless")
 options.add_argument("--no-sandbox")
-options.add_argument("--disable-dev-shm-usage")
 options.add_argument("--disable-gpu")
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
@@ -97,8 +94,8 @@ except Exception as e:
 # Step 9 - Find all SOLD slots and print them
 try:
     sold_slots = driver.find_elements(By.XPATH, "//td[contains(@class, 'Sold')]")
+    
     today_str = datetime.now().strftime("%Y-%m-%d")
-
     print(f"\n🏔️  EMPRESS CANYON - BOOKED SLOTS FOR {today_str}")
     print("-" * 45)
 
@@ -108,6 +105,7 @@ try:
         for slot in sold_slots:
             check_in = slot.get_attribute("check_in_date")
             who = slot.get_attribute("parent_client_label")
+            # Format time nicely
             time_obj = datetime.strptime(check_in, "%Y-%m-%dT%H:%M:%S")
             time_str = time_obj.strftime("%I:%M %p")
             print(f"🔴 {time_str} — {who}")
@@ -117,4 +115,5 @@ try:
 except Exception as e:
     print(f"⚠️ Error reading slots: {e}")
 
+input("\nPress Enter to close...")
 driver.quit()
