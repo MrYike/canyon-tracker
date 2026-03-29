@@ -1,0 +1,46 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+
+URL = "https://auth.investopedia.com/realms/investopedia/protocol/openid-connect/auth?client_id=finance-simulator&redirect_uri=https%3A%2F%2Fwww.investopedia.com%2Fsimulator%2Fportfolio&state=3f9d47e0-160b-479e-9883-da019923a926&response_mode=fragment&response_type=code&scope=openid&nonce=12702430-5d9a-49ec-a423-a9133b9d9e4c&code_challenge=uwdjB1YT5bk6t1gvaEtPRs-Zc4-0i33urVRtEOUAgLs&code_challenge_method=S256"
+
+EMAIL = "jack.castrission@gmail.com"
+
+def login():
+    options = webdriver.ChromeOptions()
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-gpu")
+
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+
+    try:
+        driver.get(URL)
+        time.sleep(3)
+
+        # Type in email
+        driver.find_element(By.ID, "username").send_keys(EMAIL)
+
+        # Click the submit button (fixed ID)
+        driver.find_element(By.ID, "login").click()
+        print("📧 Email submitted! Check your inbox for a code...")
+        time.sleep(3)
+
+        # Wait for you to type the code
+        code = input("Enter the verification code from your email: ")
+
+        # Enter the code — we'll find the right field after you run this
+        driver.find_element(By.ID, "otp").send_keys(code)
+        driver.find_element(By.ID, "login").click()
+
+        time.sleep(3)
+        print("✅ Logged in!")
+        input("Press Enter to close the browser...")
+
+    except Exception as e:
+        print(f"⚠️ Error: {e}")
+    finally:
+        driver.quit()
+
+login()
