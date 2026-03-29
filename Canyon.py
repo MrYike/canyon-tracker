@@ -90,16 +90,24 @@ try:
     clicked_date = date_cell.get_attribute("date")
     driver.execute_script("arguments[0].click();", date_cell)
     print(f"✅ Clicked date: {clicked_date}")
-    time.sleep(5)
+    time.sleep(10)  # longer wait
 except Exception as e:
     print(f"⚠️ Date cell error: {e}")
 
-# Step 9 - Find all SOLD slots and save to HTML
+# Step 9 - Debug and find all SOLD slots
 try:
-    sold_slots = driver.find_elements(By.XPATH, "//td[contains(@class, 'Sold')]")
-    today_str = datetime.now().strftime("%Y-%m-%d %H:%M")
+    # Print all cells for debugging
+    all_cells = driver.find_elements(By.XPATH, "//td[@class]")
+    print(f"Total cells found: {len(all_cells)}")
+    for cell in all_cells[:10]:
+        print(f"class='{cell.get_attribute('class')}' text='{cell.text}'")
 
+    sold_slots = driver.find_elements(By.XPATH, "//td[contains(@class, 'Sold')]")
+    print(f"Sold slots found: {len(sold_slots)}")
+
+    today_str = datetime.now().strftime("%Y-%m-%d %H:%M")
     rows = ""
+
     if not sold_slots:
         rows = "<tr><td colspan='2'>✅ No bookings today!</td></tr>"
     else:
