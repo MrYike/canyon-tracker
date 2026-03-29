@@ -84,26 +84,24 @@ try:
 except Exception as e:
     print(f"⚠️ Book button error: {e}")
 
-# Step 8 - Click today's date cell
+# Step 8 - Click the first available date cell
 try:
-    today = datetime.now().strftime("%Y-%m-%dT00:00:00")
-    today_cell = driver.find_element(By.XPATH, f"//td[@date='{today}']")
-    driver.execute_script("arguments[0].click();", today_cell)
-    print(f"✅ Clicked today: {today}")
+    date_cell = driver.find_element(By.XPATH, "//td[@date]")
+    clicked_date = date_cell.get_attribute("date")
+    driver.execute_script("arguments[0].click();", date_cell)
+    print(f"✅ Clicked date: {clicked_date}")
     time.sleep(5)
 except Exception as e:
     print(f"⚠️ Date cell error: {e}")
 
-# Step 9 - Find all SOLD slots and print them
+# Step 9 - Find all SOLD slots and save to HTML
 try:
     sold_slots = driver.find_elements(By.XPATH, "//td[contains(@class, 'Sold')]")
-    today_str = datetime.now().strftime("%Y-%m-%d")
+    today_str = datetime.now().strftime("%Y-%m-%d %H:%M")
 
-    print(f"\n🏔️  EMPRESS CANYON - BOOKED SLOTS FOR {today_str}")
-    print("-" * 45)
-
+    rows = ""
     if not sold_slots:
-        print("✅ No bookings today!")
+        rows = "<tr><td colspan='2'>✅ No bookings today!</td></tr>"
     else:
         for slot in sold_slots:
             check_in = slot.get_attribute("check_in_date")
@@ -111,8 +109,36 @@ try:
             time_obj = datetime.strptime(check_in, "%Y-%m-%dT%H:%M:%S")
             time_str = time_obj.strftime("%I:%M %p")
             print(f"🔴 {time_str} — {who}")
+            rows += f"<tr><td>{time_str}</td><td>{who}</td></tr>"
 
-    print("-" * 45)
+    html = f"""<!DOCTYPE html>
+<html>
+<head>
+    <title>Empress Canyon Bookings</title>
+    <meta http-equiv="refresh" content="300">
+    <style>
+        body {{ font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; }}
+        h1 {{ color: #2c3e50; }}
+        table {{ width: 100%; border-collapse: collapse; }}
+        th {{ background: #2c3e50; color: white; padding: 10px; text-align: left; }}
+        td {{ padding: 10px; border-bottom: 1px solid #ddd; }}
+        tr:hover {{ background: #f5f5f5; }}
+        .updated {{ color: grey; font-size: 12px; }}
+    </style>
+</head>
+<body>
+    <h1>🏔️ Empress Canyon Bookings</h1>
+    <p class="updated">Last updated: {today_str}</p>
+    <table>
+        <tr><th>Time</th><th>Booked By</th></tr>
+        {rows}
+    </table>
+</body>
+</html>"""
+
+    with open("index.html", "w") as f:
+        f.write(html)
+    print("✅ Saved results to index.html")
 
 except Exception as e:
     print(f"⚠️ Error reading slots: {e}")
