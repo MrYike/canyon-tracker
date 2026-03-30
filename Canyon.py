@@ -1,4 +1,5 @@
 import os
+import subprocess
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
@@ -90,13 +91,12 @@ try:
     clicked_date = date_cell.get_attribute("date")
     driver.execute_script("arguments[0].click();", date_cell)
     print(f"✅ Clicked date: {clicked_date}")
-    time.sleep(10)  # longer wait
+    time.sleep(10)
 except Exception as e:
     print(f"⚠️ Date cell error: {e}")
 
-# Step 9 - Debug and find all SOLD slots
+# Step 9 - Find all SOLD slots and save to HTML
 try:
-    # Print all cells for debugging
     all_cells = driver.find_elements(By.XPATH, "//td[@class]")
     print(f"Total cells found: {len(all_cells)}")
     for cell in all_cells[:10]:
@@ -152,3 +152,14 @@ except Exception as e:
     print(f"⚠️ Error reading slots: {e}")
 
 driver.quit()
+
+# Push index.html to GitHub
+try:
+    subprocess.run(["git", "config", "--global", "user.email", "action@github.com"])
+    subprocess.run(["git", "config", "--global", "user.name", "GitHub Action"])
+    subprocess.run(["git", "add", "index.html"])
+    subprocess.run(["git", "commit", "-m", "update bookings"])
+    subprocess.run(["git", "push"])
+    print("✅ Pushed to GitHub!")
+except Exception as e:
+    print(f"⚠️ Push error: {e}")
