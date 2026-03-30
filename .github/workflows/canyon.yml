@@ -8,6 +8,8 @@ on:
 jobs:
   run-tracker:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/checkout@v3
@@ -30,3 +32,11 @@ jobs:
         env:
           CANYON_EMAIL: ${{ secrets.CANYON_EMAIL }}
           CANYON_PASSWORD: ${{ secrets.CANYON_PASSWORD }}
+
+      - name: Commit results
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git add index.html
+          git diff --staged --quiet || git commit -m "update bookings"
+          git push
