@@ -4,12 +4,17 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from datetime import datetime
+from datetime import datetime, timedelta
 import time
 
 URL = "https://nsw.rezexpert.com/nswctobookdtm?business_code=500551"
 EMAIL = os.environ.get("CANYON_EMAIL", "James@myadventuregroup.com.au")
 PASSWORD = os.environ.get("CANYON_PASSWORD", "")
+
+# ================== CONFIG ==================
+NUM_DAYS = 14  # ← Change this to any number you want (7, 14, 30, 60…)
+NEXT_MONTH_XPATH = "//div[contains(@style, 'border-left: 20px solid rgb(255, 255, 255)')]"
+# ===========================================
 
 options = webdriver.ChromeOptions()
 options.add_argument("--headless")
@@ -76,90 +81,128 @@ try:
 except Exception as e:
     print(f"⚠️ Empress error: {e}")
 
-# Step 7 - Click Book button
+# Step 7 - Click Book button (opens the availability grid)
 try:
     book_btn = driver.find_element(By.XPATH, "//div[@onclick=\"selectUnitType('nsw_cto_select_canyoning_location', {iUnitTypeId:3131});\"]")
     driver.execute_script("arguments[0].click();", book_btn)
-    print("✅ Clicked Book!")
+    print("✅ Clicked Book! (now in availability grid)")
     time.sleep(5)
 except Exception as e:
     print(f"⚠️ Book button error: {e}")
 
-# Step 8 - Click the first available date cell
-try:
-    date_cell = driver.find_element(By.XPATH, "//td[@date]")
-    clicked_date = date_cell.get_attribute("date")
-    driver.execute_script("arguments[0].click();", date_cell)
-    print(f"✅ Clicked date: {clicked_date}")
-    time.sleep(10)
-except Exception as e:
-    print(f"⚠️ Date cell error: {e}")
+# ================== MULTI-DAY LOOP (exactly like the working script) ==================
+print(f"\n🔍 STARTING FULLY AUTOMATIC SCAN — Next {NUM_DAYS} days\n")
 
-# Step 9 - Find all SOLD slots and save to HTML
-try:
-    all_cells = driver.find_elements(By.XPATH, "//td[@class]")
-    print(f"Total cells found: {len(all_cells)}")
-    for cell in all_cells[:10]:
-        print(f"class='{cell.get_attribute('class')}' text='{cell.text}'")
+all_days_html = ""
 
-    sold_slots = driver.find_elements(By.XPATH, "//td[contains(@class, 'Sold')]")
-    print(f"Sold slots found: {len(sold_slots)}")
+for day_offset in range(NUM_DAYS):
+    target_date = (datetime.now() + timedelta(days=day_offset)).strftime("%Y-%m-%dT00:00:00")
+    target_date_display = (datetime.now() + timedelta(days=day_offset)).strftime("%Y-%m-%d")
+    
+    print(f"\n{'='*70}")
+    print(f"📅 PROCESSING: {target_date_display}  (Day {day_offset+1}/{NUM_DAYS})")
+    print(f"{'='*70}")
 
-    today_str = datetime.now().strftime("%Y-%m-%d %H:%M")
-    rows = ""
+    # Click the exact date cell (auto-advances months if needed)
+    date_clicked = False
+    for attempt in range(6):  # up to 5 automatic Next Month clicks
+        try:
+            date_cell = driver.find_element(By.XPATH, f"//td[@date='{target_date}']")
+            driver.execute_script("arguments[0].click();", date_cell)
+            print(f"✅ Clicked date cell: {target_date_display}")
+            time.sleep(6)
+            date_clicked = True
+            break
+        except:
+            if attempt < 5:
+                try:
+                    next_btn = driver.find_element(By.XPATH, NEXT_MONTH_XPATH)
+                    driver.execute_script("arguments[0].click();", next_btn)
+                    print(f"   → Clicked Next Month arrow (attempt {attempt+1})")
+                    time.sleep(3)
+                except:
+                    pass
+            else:
+                print(f"⚠️ Could not reach {target_date_display} after 5 month advances.")
 
-    if not sold_slots:
-        rows = "<tr><td colspan='2'>✅ No bookings today!</td></tr>"
-    else:
-        for slot in sold_slots:
-            check_in = slot.get_attribute("check_in_date")
-            who = slot.get_attribute("parent_client_label")
-            time_obj = datetime.strptime(check_in, "%Y-%m-%dT%H:%M:%S")
-            time_str = time_obj.strftime("%I:%M %p")
-            print(f"🔴 {time_str} — {who}")
-            rows += f"<tr><td>{time_str}</td><td>{who}</td></tr>"
+    if not date_clicked:
+        all_days_html += f"<h2>📅 {target_date_display}</h2><p style='color:orange;'>⚠️ Could not load this date</p>"
+        continue
 
-    html = f"""<!DOCTYPE html>
+    # Scrape SOLD slots for this day
+    try:
+        sold_slots = driver.find_elements(By.XPATH, "//td[contains(@class, 'Sold')]")
+        
+        day_html = f"<h2 style='margin-top:40px; color:#2c3e50;'>📅 {target_date_display}</h2>"
+
+        if not sold_slots:
+            day_html += "<p style='color:#27ae60; font-weight:bold;'>✅ No bookings on this day!</p>"
+        else:
+            rows = ""
+            for slot in sold_slots:
+                check_in = slot.get_attribute("check_in_date")
+                who = slot.get_attribute("parent_client_label")
+                time_obj = datetime.strptime(check_in, "%Y-%m-%dT%H:%M:%S")
+                time_str = time_obj.strftime("%I:%M %p")
+                print(f"   🔴 {time_str} — {who}")
+                rows += f"<tr><td>{time_str}</td><td>{who}</td></tr>"
+            
+            day_html += f"""
+            <table style="width:100%; border-collapse:collapse; margin-bottom:30px;">
+                <tr><th style="background:#2c3e50; color:white; padding:12px; text-align:left;">Time</th>
+                    <th style="background:#2c3e50; color:white; padding:12px; text-align:left;">Booked By</th></tr>
+                {rows}
+            </table>"""
+        
+        all_days_html += day_html
+
+    except Exception as e:
+        print(f"⚠️ Error reading slots for {target_date_display}: {e}")
+        all_days_html += f"<h2>📅 {target_date_display}</h2><p style='color:red;'>Error loading slots</p>"
+
+    print(f"✅ Day {target_date_display} complete\n")
+
+# ================== BUILD & SAVE HTML ==================
+today_str = datetime.now().strftime("%Y-%m-%d %H:%M")
+
+html = f"""<!DOCTYPE html>
 <html>
 <head>
     <title>Empress Canyon Bookings</title>
     <meta http-equiv="refresh" content="300">
     <style>
-        body {{ font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; }}
-        h1 {{ color: #2c3e50; }}
-        table {{ width: 100%; border-collapse: collapse; }}
-        th {{ background: #2c3e50; color: white; padding: 10px; text-align: left; }}
-        td {{ padding: 10px; border-bottom: 1px solid #ddd; }}
-        tr:hover {{ background: #f5f5f5; }}
-        .updated {{ color: grey; font-size: 12px; }}
+        body {{ font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.5; }}
+        h1 {{ color: #2c3e50; text-align: center; }}
+        h2 {{ color: #34495e; border-bottom: 2px solid #3498db; padding-bottom: 8px; }}
+        table {{ width: 100%; border-collapse: collapse; margin: 15px 0; }}
+        th {{ background: #2c3e50; color: white; padding: 12px; text-align: left; }}
+        td {{ padding: 12px; border-bottom: 1px solid #ddd; }}
+        tr:hover {{ background: #f8f9fa; }}
+        .updated {{ color: #7f8c8d; font-size: 14px; text-align: center; }}
+        .no-bookings {{ color: #27ae60; font-weight: bold; }}
     </style>
 </head>
 <body>
     <h1>🏔️ Empress Canyon Bookings</h1>
-    <p class="updated">Last updated: {today_str}</p>
-    <table>
-        <tr><th>Time</th><th>Booked By</th></tr>
-        {rows}
-    </table>
+    <p class="updated">Last updated: {today_str} • Next {NUM_DAYS} days</p>
+    {all_days_html}
 </body>
 </html>"""
 
-    with open("index.html", "w") as f:
-        f.write(html)
-    print("✅ Saved results to index.html")
+with open("index.html", "w", encoding="utf-8") as f:
+    f.write(html)
 
-except Exception as e:
-    print(f"⚠️ Error reading slots: {e}")
+print("✅ Saved multi-day results to index.html")
 
 driver.quit()
 
-# Push index.html to GitHub
+# Push to GitHub
 try:
-    subprocess.run(["git", "config", "--global", "user.email", "action@github.com"])
-    subprocess.run(["git", "config", "--global", "user.name", "GitHub Action"])
-    subprocess.run(["git", "add", "index.html"])
-    subprocess.run(["git", "commit", "-m", "update bookings"])
-    subprocess.run(["git", "push"])
+    subprocess.run(["git", "config", "--global", "user.email", "action@github.com"], check=True)
+    subprocess.run(["git", "config", "--global", "user.name", "GitHub Action"], check=True)
+    subprocess.run(["git", "add", "index.html"], check=True)
+    subprocess.run(["git", "commit", "-m", f"update bookings - {today_str}"], check=True)
+    subprocess.run(["git", "push"], check=True)
     print("✅ Pushed to GitHub!")
 except Exception as e:
     print(f"⚠️ Push error: {e}")
