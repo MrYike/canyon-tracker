@@ -12,7 +12,7 @@ EMAIL = os.environ.get("CANYON_EMAIL", "James@myadventuregroup.com.au")
 PASSWORD = os.environ.get("CANYON_PASSWORD", "")
 
 # ================== CONFIG ==================
-NUM_DAYS = 14  # ← Change this anytime
+NUM_DAYS = 14
 NEXT_MONTH_XPATH = "//div[contains(@style, 'border-left: 20px solid rgb(255, 255, 255)')]"
 # ===========================================
 
@@ -26,7 +26,69 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 driver.get(URL)
 time.sleep(5)
 
-# [All the login, Empress, Book steps are exactly the same as before...]
+# Step 1 - Cookie banner
+try:
+    driver.find_element(By.LINK_TEXT, "Got it!").click()
+    print("✅ Clicked cookie banner")
+    time.sleep(1)
+except:
+    pass
+
+# Step 2 - Accept terms
+try:
+    radio = driver.find_element(By.NAME, "radPreConditionAccept")
+    driver.execute_script("arguments[0].click();", radio)
+    time.sleep(1)
+    accept_btn = driver.find_element(By.ID, "divPreConditionsClose")
+    driver.execute_script("arguments[0].click();", accept_btn)
+    print("✅ Accepted terms!")
+    time.sleep(3)
+except Exception as e:
+    print(f"⚠️ Terms error: {e}")
+
+# Step 3 - Click Login link
+try:
+    driver.find_element(By.PARTIAL_LINK_TEXT, "ogin").click()
+    print("✅ Clicked login link")
+    time.sleep(3)
+except Exception as e:
+    print(f"⚠️ Login link error: {e}")
+
+# Step 4 - Enter credentials
+try:
+    driver.find_element(By.ID, "txtEmail").send_keys(EMAIL)
+    driver.find_element(By.ID, "txtPassword").send_keys(PASSWORD)
+    print("✅ Entered credentials")
+    time.sleep(1)
+except Exception as e:
+    print(f"⚠️ Credentials error: {e}")
+
+# Step 5 - Click Login button
+try:
+    login_btn = driver.find_element(By.ID, "btnLoginNext")
+    driver.execute_script("arguments[0].click();", login_btn)
+    print("✅ Clicked Login!")
+    time.sleep(5)
+except Exception as e:
+    print(f"⚠️ Login button error: {e}")
+
+# Step 6 - Click Empress
+try:
+    empress = driver.find_element(By.XPATH, "//div[contains(text(), 'Empress')]")
+    driver.execute_script("arguments[0].click();", empress)
+    print("✅ Clicked Empress!")
+    time.sleep(3)
+except Exception as e:
+    print(f"⚠️ Empress error: {e}")
+
+# Step 7 - Click Book button
+try:
+    book_btn = driver.find_element(By.XPATH, "//div[@onclick=\"selectUnitType('nsw_cto_select_canyoning_location', {iUnitTypeId:3131});\"]")
+    driver.execute_script("arguments[0].click();", book_btn)
+    print("✅ Clicked Book!")
+    time.sleep(5)
+except Exception as e:
+    print(f"⚠️ Book button error: {e}")
 
 # ================== MULTI-DAY LOOP ==================
 print(f"\n🔍 STARTING FULLY AUTOMATIC SCAN — Next {NUM_DAYS} days\n")
@@ -36,12 +98,11 @@ all_days_html = ""
 for day_offset in range(NUM_DAYS):
     target_date = (datetime.now() + timedelta(days=day_offset)).strftime("%Y-%m-%dT00:00:00")
     target_date_display = (datetime.now() + timedelta(days=day_offset)).strftime("%Y-%m-%d")
-    
+
     print(f"\n{'='*70}")
     print(f"📅 PROCESSING: {target_date_display}  (Day {day_offset+1}/{NUM_DAYS})")
     print(f"{'='*70}")
 
-    # Click date cell + auto next month
     date_clicked = False
     for attempt in range(6):
         try:
@@ -64,17 +125,16 @@ for day_offset in range(NUM_DAYS):
                 print(f"⚠️ Could not reach {target_date_display}")
 
     if not date_clicked:
-        all_days_html += f"<h2>📅 {target_date_display}</h2><p style='color:orange;'>⚠️ Could not load this date</p>"
+        all_days_html += f"<div class='day-section'><h2>📅 {target_date_display}</h2><p class='no-book warning'>⚠️ Could not load this date</p></div>"
         continue
 
-    # Scrape sold slots
     try:
         sold_slots = driver.find_elements(By.XPATH, "//td[contains(@class, 'Sold')]")
-        
-        day_html = f"<h2 style='margin-top:40px; color:#2c3e50;'>📅 {target_date_display}</h2>"
+
+        day_html = f"<div class='day-section'><h2>📅 {target_date_display}</h2>"
 
         if not sold_slots:
-            day_html += "<p style='color:#27ae60; font-weight:bold;'>✅ No bookings on this day!</p>"
+            day_html += "<p class='no-book'>✅ No bookings on this day!</p>"
         else:
             rows = ""
             for slot in sold_slots:
@@ -84,19 +144,19 @@ for day_offset in range(NUM_DAYS):
                 time_str = time_obj.strftime("%I:%M %p")
                 print(f"   🔴 {time_str} — {who}")
                 rows += f"<tr><td>{time_str}</td><td>{who}</td></tr>"
-            
+
             day_html += f"""
-            <table style="width:100%; border-collapse:collapse; margin-bottom:30px;">
-                <tr><th style="background:#2c3e50; color:white; padding:12px; text-align:left;">Time</th>
-                    <th style="background:#2c3e50; color:white; padding:12px; text-align:left;">Booked By</th></tr>
+            <table>
+                <tr><th>Time</th><th>Booked By</th></tr>
                 {rows}
             </table>"""
-        
+
+        day_html += "</div>"
         all_days_html += day_html
 
     except Exception as e:
         print(f"⚠️ Error reading slots for {target_date_display}: {e}")
-        all_days_html += f"<h2>📅 {target_date_display}</h2><p style='color:red;'>Error loading slots</p>"
+        all_days_html += f"<div class='day-section'><h2>📅 {target_date_display}</h2><p class='warning'>Error loading slots</p></div>"
 
     print(f"✅ Day {target_date_display} complete\n")
 
@@ -107,7 +167,7 @@ html = f"""<!DOCTYPE html>
 <html>
 <head>
     <title>Empress Canyon Bookings</title>
-    <meta http-equiv="refresh" content="300">
+    <meta http-equiv="refresh" content="3600">
     <style>
         body {{ font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.5; }}
         h1 {{ color: #2c3e50; text-align: center; }}
@@ -117,6 +177,9 @@ html = f"""<!DOCTYPE html>
         td {{ padding: 12px; border-bottom: 1px solid #ddd; }}
         tr:hover {{ background: #f8f9fa; }}
         .updated {{ color: #7f8c8d; font-size: 14px; text-align: center; }}
+        .no-book {{ color: #27ae60; font-weight: bold; }}
+        .warning {{ color: #e67e22; }}
+        .day-section {{ margin-bottom: 40px; }}
     </style>
 </head>
 <body>
@@ -130,8 +193,4 @@ with open("index.html", "w", encoding="utf-8") as f:
     f.write(html)
 
 print("✅ Saved multi-day results to index.html")
-
 driver.quit()
-
-# ←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←
-# NO GIT PUSH HERE ANYMORE — GitHub Action handles it
