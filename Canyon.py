@@ -21,28 +21,29 @@ options.add_argument("--headless")
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 options.add_argument("--disable-gpu")
+options.add_argument("--window-size=1920,1080")
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 driver.get(URL)
-time.sleep(5)
+time.sleep(8)
 
 # Step 1 - Cookie banner
 try:
     driver.find_element(By.LINK_TEXT, "Got it!").click()
     print("✅ Clicked cookie banner")
-    time.sleep(1)
+    time.sleep(2)
 except:
-    pass
+    print("⚠️ No cookie banner found")
 
 # Step 2 - Accept terms
 try:
     radio = driver.find_element(By.NAME, "radPreConditionAccept")
     driver.execute_script("arguments[0].click();", radio)
-    time.sleep(1)
+    time.sleep(2)
     accept_btn = driver.find_element(By.ID, "divPreConditionsClose")
     driver.execute_script("arguments[0].click();", accept_btn)
     print("✅ Accepted terms!")
-    time.sleep(3)
+    time.sleep(5)
 except Exception as e:
     print(f"⚠️ Terms error: {e}")
 
@@ -50,7 +51,7 @@ except Exception as e:
 try:
     driver.find_element(By.PARTIAL_LINK_TEXT, "ogin").click()
     print("✅ Clicked login link")
-    time.sleep(3)
+    time.sleep(5)
 except Exception as e:
     print(f"⚠️ Login link error: {e}")
 
@@ -59,7 +60,7 @@ try:
     driver.find_element(By.ID, "txtEmail").send_keys(EMAIL)
     driver.find_element(By.ID, "txtPassword").send_keys(PASSWORD)
     print("✅ Entered credentials")
-    time.sleep(1)
+    time.sleep(2)
 except Exception as e:
     print(f"⚠️ Credentials error: {e}")
 
@@ -68,16 +69,30 @@ try:
     login_btn = driver.find_element(By.ID, "btnLoginNext")
     driver.execute_script("arguments[0].click();", login_btn)
     print("✅ Clicked Login!")
-    time.sleep(5)
+    time.sleep(8)
 except Exception as e:
     print(f"⚠️ Login button error: {e}")
+
+# Confirm logged in
+try:
+    body_text = driver.find_element(By.TAG_NAME, "body").text
+    print(f"\n--- PAGE AFTER LOGIN ---\n{body_text[:400]}\n")
+    if "Logged In" not in body_text:
+        print("❌ LOGIN FAILED — exiting!")
+        driver.quit()
+        exit(1)
+    print("✅ Confirmed logged in!")
+except Exception as e:
+    print(f"⚠️ Could not confirm login: {e}")
+    driver.quit()
+    exit(1)
 
 # Step 6 - Click Empress
 try:
     empress = driver.find_element(By.XPATH, "//div[contains(text(), 'Empress')]")
     driver.execute_script("arguments[0].click();", empress)
     print("✅ Clicked Empress!")
-    time.sleep(3)
+    time.sleep(5)
 except Exception as e:
     print(f"⚠️ Empress error: {e}")
 
@@ -86,12 +101,12 @@ try:
     book_btn = driver.find_element(By.XPATH, "//div[@onclick=\"selectUnitType('nsw_cto_select_canyoning_location', {iUnitTypeId:3131});\"]")
     driver.execute_script("arguments[0].click();", book_btn)
     print("✅ Clicked Book!")
-    time.sleep(5)
+    time.sleep(8)
 except Exception as e:
     print(f"⚠️ Book button error: {e}")
 
 # ================== MULTI-DAY LOOP ==================
-print(f"\n🔍 STARTING FULLY AUTOMATIC SCAN — Next {NUM_DAYS} days\n")
+print(f"\n🔍 STARTING SCAN — Next {NUM_DAYS} days\n")
 
 all_days_html = ""
 
@@ -109,7 +124,7 @@ for day_offset in range(NUM_DAYS):
             date_cell = driver.find_element(By.XPATH, f"//td[@date='{target_date}']")
             driver.execute_script("arguments[0].click();", date_cell)
             print(f"✅ Clicked date cell: {target_date_display}")
-            time.sleep(6)
+            time.sleep(8)
             date_clicked = True
             break
         except:
@@ -118,14 +133,14 @@ for day_offset in range(NUM_DAYS):
                     next_btn = driver.find_element(By.XPATH, NEXT_MONTH_XPATH)
                     driver.execute_script("arguments[0].click();", next_btn)
                     print(f"   → Clicked Next Month arrow (attempt {attempt+1})")
-                    time.sleep(3)
+                    time.sleep(5)
                 except:
-                    pass
+                    print(f"   → Next Month button not found (attempt {attempt+1})")
             else:
                 print(f"⚠️ Could not reach {target_date_display}")
 
     if not date_clicked:
-        all_days_html += f"<div class='day-section'><h2>📅 {target_date_display}</h2><p class='no-book warning'>⚠️ Could not load this date</p></div>"
+        all_days_html += f"<div class='day-section'><h2>📅 {target_date_display}</h2><p class='warning'>⚠️ Could not load this date</p></div>"
         continue
 
     try:
