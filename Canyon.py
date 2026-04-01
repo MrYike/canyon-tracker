@@ -1,5 +1,5 @@
 import os
-import subprocess
+import json
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
@@ -109,6 +109,7 @@ except Exception as e:
 print(f"\n🔍 STARTING SCAN — Next {NUM_DAYS} days\n")
 
 all_days_html = ""
+empress_data = {}  # for data.json
 
 for day_offset in range(NUM_DAYS):
     target_date = (datetime.now() + timedelta(days=day_offset)).strftime("%Y-%m-%dT00:00:00")
@@ -144,21 +145,47 @@ for day_offset in range(NUM_DAYS):
         continue
 
     try:
+        # Get sold slots
         sold_slots = driver.find_elements(By.XPATH, "//td[contains(@class, 'Sold')]")
 
+        # Get all slots for full picture
+        all_slots = driver.find_elements(By.XPATH, "//td[@check_in_date]")
+
+        sold_list = []
+        available_list = []
+        all_slot_times = []
+
+        for slot in all_slots:
+            check_in = slot.get_attribute("check_in_date")
+            slot_class = slot.get_attribute("class") or ""
+            if not check_in:
+                continue
+            all_slot_times.append(check_in)
+            if "Sold" in slot_class:
+                who = slot.get_attribute("parent_client_label") or "Unknown"
+                sold_list.append({"time": check_in, "company": who})
+            elif "Available" in slot_class:
+                available_list.append(check_in)
+
+        # Store for data.json
+        empress_data[target_date_display] = {
+            "sold": sold_list,
+            "available": available_list,
+            "all_slots": all_slot_times
+        }
+
+        # Build HTML for this day
         day_html = f"<div class='day-section'><h2>📅 {target_date_display}</h2>"
 
-        if not sold_slots:
+        if not sold_list:
             day_html += "<p class='no-book'>✅ No bookings on this day!</p>"
         else:
             rows = ""
-            for slot in sold_slots:
-                check_in = slot.get_attribute("check_in_date")
-                who = slot.get_attribute("parent_client_label")
-                time_obj = datetime.strptime(check_in, "%Y-%m-%dT%H:%M:%S")
+            for slot in sold_list:
+                time_obj = datetime.strptime(slot["time"], "%Y-%m-%dT%H:%M:%S")
                 time_str = time_obj.strftime("%I:%M %p")
-                print(f"   🔴 {time_str} — {who}")
-                rows += f"<tr><td>{time_str}</td><td>{who}</td></tr>"
+                print(f"   🔴 {time_str} — {slot['company']}")
+                rows += f"<tr><td>{time_str}</td><td>{slot['company']}</td></tr>"
 
             day_html += f"""
             <table>
@@ -175,9 +202,24 @@ for day_offset in range(NUM_DAYS):
 
     print(f"✅ Day {target_date_display} complete\n")
 
-# ================== BUILD HTML ==================
+driver.quit()
+
+# ================== SAVE DATA.JSON ==================
 today_str = datetime.now().strftime("%Y-%m-%d %H:%M")
 
+data_json = {
+    "updated": today_str,
+    "data": {
+        "Empress": empress_data
+    }
+}
+
+with open("data.json", "w", encoding="utf-8") as f:
+    json.dump(data_json, f, indent=2)
+
+print("✅ Saved data.json")
+
+# ================== SAVE INDEX.HTML (fallback) ==================
 html = f"""<!DOCTYPE html>
 <html>
 <head>
@@ -207,5 +249,4 @@ html = f"""<!DOCTYPE html>
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(html)
 
-print("✅ Saved multi-day results to index.html")
-driver.quit()
+print("✅ Saved index.html")
