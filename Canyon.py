@@ -11,10 +11,7 @@ URL = "https://nsw.rezexpert.com/nswctobookdtm?business_code=500551"
 EMAIL = os.environ.get("CANYON_EMAIL", "James@myadventuregroup.com.au")
 PASSWORD = os.environ.get("CANYON_PASSWORD", "")
 
-# ================== CONFIG ==================
 NUM_DAYS = 14
-NEXT_MONTH_XPATH = "//div[contains(@style, 'border-left: 20px solid rgb(255, 255, 255)')]"
-# ===========================================
 
 options = webdriver.ChromeOptions()
 options.add_argument("--headless")
@@ -27,15 +24,13 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 driver.get(URL)
 time.sleep(8)
 
-# Step 1 - Cookie banner
 try:
     driver.find_element(By.LINK_TEXT, "Got it!").click()
     print("✅ Clicked cookie banner")
     time.sleep(2)
 except:
-    print("⚠️ No cookie banner found")
+    pass
 
-# Step 2 - Accept terms
 try:
     radio = driver.find_element(By.NAME, "radPreConditionAccept")
     driver.execute_script("arguments[0].click();", radio)
@@ -47,7 +42,6 @@ try:
 except Exception as e:
     print(f"⚠️ Terms error: {e}")
 
-# Step 3 - Click Login link
 try:
     driver.find_element(By.PARTIAL_LINK_TEXT, "ogin").click()
     print("✅ Clicked login link")
@@ -55,7 +49,6 @@ try:
 except Exception as e:
     print(f"⚠️ Login link error: {e}")
 
-# Step 4 - Enter credentials
 try:
     driver.find_element(By.ID, "txtEmail").send_keys(EMAIL)
     driver.find_element(By.ID, "txtPassword").send_keys(PASSWORD)
@@ -64,7 +57,6 @@ try:
 except Exception as e:
     print(f"⚠️ Credentials error: {e}")
 
-# Step 5 - Click Login button
 try:
     login_btn = driver.find_element(By.ID, "btnLoginNext")
     driver.execute_script("arguments[0].click();", login_btn)
@@ -73,10 +65,8 @@ try:
 except Exception as e:
     print(f"⚠️ Login button error: {e}")
 
-# Confirm logged in
 try:
     body_text = driver.find_element(By.TAG_NAME, "body").text
-    print(f"\n--- PAGE AFTER LOGIN ---\n{body_text[:400]}\n")
     if "Logged In" not in body_text:
         print("❌ LOGIN FAILED — exiting!")
         driver.quit()
@@ -87,7 +77,6 @@ except Exception as e:
     driver.quit()
     exit(1)
 
-# Step 6 - Click Empress
 try:
     empress = driver.find_element(By.XPATH, "//div[contains(text(), 'Empress')]")
     driver.execute_script("arguments[0].click();", empress)
@@ -96,7 +85,6 @@ try:
 except Exception as e:
     print(f"⚠️ Empress error: {e}")
 
-# Step 7 - Click Book button
 try:
     book_btn = driver.find_element(By.XPATH, "//div[@onclick=\"selectUnitType('nsw_cto_select_canyoning_location', {iUnitTypeId:3131});\"]")
     driver.execute_script("arguments[0].click();", book_btn)
@@ -105,43 +93,50 @@ try:
 except Exception as e:
     print(f"⚠️ Book button error: {e}")
 
-# DEBUG - print page and find all td elements with date attribute
-print("\n--- DEBUG AFTER BOOK CLICK ---")
-print(driver.find_element(By.TAG_NAME, "body").text[:500])
-print("\n--- DATE CELLS ---")
-date_cells = driver.find_elements(By.XPATH, "//td[@date]")
-print(f"Found {len(date_cells)} date cells")
-for cell in date_cells[:5]:
-    print(f"date='{cell.get_attribute('date')}'")
+def get_visible_dates():
+    cells = driver.find_elements(By.XPATH, "//td[@date]")
+    dates = []
+    for cell in cells:
+        d = cell.get_attribute("date")
+        if d:
+            dates.append(d[:10])
+    return sorted(set(dates))
 
-# Also print all divs with onclick to find next month button
-print("\n--- NEXT MONTH BUTTONS ---")
-try:
-    all_divs = driver.find_elements(By.XPATH, "//div[@onclick]")
-    for div in all_divs[:10]:
-        onclick = div.get_attribute("onclick")
-        style = div.get_attribute("style") or ""
-        if "border" in style or "next" in onclick.lower() or "month" in onclick.lower() or "prev" in onclick.lower():
-            print(f"onclick='{onclick}' style='{style[:80]}'")
-except Exception as e:
-    print(f"Error finding buttons: {e}")
+def click_next_month():
+    try:
+        clicked = driver.execute_script("""
+            var els = document.querySelectorAll('div');
+            for(var i=0; i<els.length; i++){
+                var s = els[i].getAttribute('style') || '';
+                var o = els[i].getAttribute('onclick') || '';
+                if(s.indexOf('border-left') > -1 && o.indexOf('selectUnitType') === -1){
+                    els[i].click();
+                    return true;
+                }
+            }
+            return false;
+        """)
+        time.sleep(3)
+        return clicked
+    except:
+        return False
 
-# ================== MULTI-DAY LOOP ==================
-print(f"\n🔍 STARTING SCAN — Next {NUM_DAYS} days\n")
+target_dates = [(datetime.now() + timedelta(days=i)).strftime("%Y-%m-%d") for i in range(NUM_DAYS)]
+print(f"\n🔍 STARTING SCAN — {target_dates[0]} to {target_dates[-1]}\n")
 
 all_days_html = ""
 empress_data = {}
 
-for day_offset in range(NUM_DAYS):
-    target_date = (datetime.now() + timedelta(days=day_offset)).strftime("%Y-%m-%dT00:00:00")
-    target_date_display = (datetime.now() + timedelta(days=day_offset)).strftime("%Y-%m-%d")
+for target_date_display in target_dates:
+    target_date = target_date_display + "T00:00:00"
 
     print(f"\n{'='*70}")
-    print(f"📅 PROCESSING: {target_date_display}  (Day {day_offset+1}/{NUM_DAYS})")
+    print(f"📅 PROCESSING: {target_date_display}")
     print(f"{'='*70}")
 
     date_clicked = False
-    for attempt in range(6):
+
+    for attempt in range(8):
         try:
             date_cell = driver.find_element(By.XPATH, f"//td[@date='{target_date}']")
             driver.execute_script("arguments[0].click();", date_cell)
@@ -150,14 +145,10 @@ for day_offset in range(NUM_DAYS):
             date_clicked = True
             break
         except:
-            if attempt < 5:
-                try:
-                    next_btn = driver.find_element(By.XPATH, NEXT_MONTH_XPATH)
-                    driver.execute_script("arguments[0].click();", next_btn)
-                    print(f"   → Clicked Next Month arrow (attempt {attempt+1})")
-                    time.sleep(5)
-                except:
-                    print(f"   → Next Month button not found (attempt {attempt+1})")
+            if attempt < 7:
+                visible = get_visible_dates()
+                print(f"   Visible: {visible[:3]}... clicking next month (attempt {attempt+1})")
+                click_next_month()
             else:
                 print(f"⚠️ Could not reach {target_date_display}")
 
@@ -166,9 +157,7 @@ for day_offset in range(NUM_DAYS):
         continue
 
     try:
-        sold_slots = driver.find_elements(By.XPATH, "//td[contains(@class, 'Sold')]")
         all_slots = driver.find_elements(By.XPATH, "//td[@check_in_date]")
-
         sold_list = []
         available_list = []
         all_slot_times = []
@@ -195,6 +184,7 @@ for day_offset in range(NUM_DAYS):
 
         if not sold_list:
             day_html += "<p class='no-book'>✅ No bookings on this day!</p>"
+            print("✅ No bookings")
         else:
             rows = ""
             for slot in sold_list:
@@ -202,40 +192,25 @@ for day_offset in range(NUM_DAYS):
                 time_str = time_obj.strftime("%I:%M %p")
                 print(f"   🔴 {time_str} — {slot['company']}")
                 rows += f"<tr><td>{time_str}</td><td>{slot['company']}</td></tr>"
-
-            day_html += f"""
-            <table>
-                <tr><th>Time</th><th>Booked By</th></tr>
-                {rows}
-            </table>"""
+            day_html += f"<table><tr><th>Time</th><th>Booked By</th></tr>{rows}</table>"
 
         day_html += "</div>"
         all_days_html += day_html
 
     except Exception as e:
-        print(f"⚠️ Error reading slots for {target_date_display}: {e}")
+        print(f"⚠️ Error: {e}")
         all_days_html += f"<div class='day-section'><h2>📅 {target_date_display}</h2><p class='warning'>Error loading slots</p></div>"
 
     print(f"✅ Day {target_date_display} complete\n")
 
 driver.quit()
 
-# ================== SAVE DATA.JSON ==================
 today_str = datetime.now().strftime("%Y-%m-%d %H:%M")
 
-data_json = {
-    "updated": today_str,
-    "data": {
-        "Empress": empress_data
-    }
-}
-
 with open("data.json", "w", encoding="utf-8") as f:
-    json.dump(data_json, f, indent=2)
-
+    json.dump({"updated": today_str, "data": {"Empress": empress_data}}, f, indent=2)
 print("✅ Saved data.json")
 
-# ================== SAVE INDEX.HTML ==================
 html = f"""<!DOCTYPE html>
 <html>
 <head>
@@ -264,5 +239,4 @@ html = f"""<!DOCTYPE html>
 
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(html)
-
 print("✅ Saved index.html")
