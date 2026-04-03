@@ -105,11 +105,32 @@ try:
 except Exception as e:
     print(f"⚠️ Book button error: {e}")
 
+# DEBUG - print page and find all td elements with date attribute
+print("\n--- DEBUG AFTER BOOK CLICK ---")
+print(driver.find_element(By.TAG_NAME, "body").text[:500])
+print("\n--- DATE CELLS ---")
+date_cells = driver.find_elements(By.XPATH, "//td[@date]")
+print(f"Found {len(date_cells)} date cells")
+for cell in date_cells[:5]:
+    print(f"date='{cell.get_attribute('date')}'")
+
+# Also print all divs with onclick to find next month button
+print("\n--- NEXT MONTH BUTTONS ---")
+try:
+    all_divs = driver.find_elements(By.XPATH, "//div[@onclick]")
+    for div in all_divs[:10]:
+        onclick = div.get_attribute("onclick")
+        style = div.get_attribute("style") or ""
+        if "border" in style or "next" in onclick.lower() or "month" in onclick.lower() or "prev" in onclick.lower():
+            print(f"onclick='{onclick}' style='{style[:80]}'")
+except Exception as e:
+    print(f"Error finding buttons: {e}")
+
 # ================== MULTI-DAY LOOP ==================
 print(f"\n🔍 STARTING SCAN — Next {NUM_DAYS} days\n")
 
 all_days_html = ""
-empress_data = {}  # for data.json
+empress_data = {}
 
 for day_offset in range(NUM_DAYS):
     target_date = (datetime.now() + timedelta(days=day_offset)).strftime("%Y-%m-%dT00:00:00")
@@ -145,10 +166,7 @@ for day_offset in range(NUM_DAYS):
         continue
 
     try:
-        # Get sold slots
         sold_slots = driver.find_elements(By.XPATH, "//td[contains(@class, 'Sold')]")
-
-        # Get all slots for full picture
         all_slots = driver.find_elements(By.XPATH, "//td[@check_in_date]")
 
         sold_list = []
@@ -167,14 +185,12 @@ for day_offset in range(NUM_DAYS):
             elif "Available" in slot_class:
                 available_list.append(check_in)
 
-        # Store for data.json
         empress_data[target_date_display] = {
             "sold": sold_list,
             "available": available_list,
             "all_slots": all_slot_times
         }
 
-        # Build HTML for this day
         day_html = f"<div class='day-section'><h2>📅 {target_date_display}</h2>"
 
         if not sold_list:
@@ -219,7 +235,7 @@ with open("data.json", "w", encoding="utf-8") as f:
 
 print("✅ Saved data.json")
 
-# ================== SAVE INDEX.HTML (fallback) ==================
+# ================== SAVE INDEX.HTML ==================
 html = f"""<!DOCTYPE html>
 <html>
 <head>
