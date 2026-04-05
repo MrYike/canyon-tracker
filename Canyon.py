@@ -1,6 +1,6 @@
 # ================== CANYON TRACKER - CLEAN VERSION ==================
 # For canyon-tracker repo only
-# Saves canyons_data.json (GitHub Actions copies it to data.json for the app)
+# Now scans ONLY: Empress, Grand Canyon, Narrow Neck
 
 import os
 import json
@@ -17,39 +17,16 @@ EMAIL = os.environ.get("CANYON_EMAIL", "James@myadventuregroup.com.au")
 PASSWORD = os.environ.get("CANYON_PASSWORD", "")
 NUM_DAYS = 14
 
+# ================== ONLY THESE 3 CANYONS ==================
 CANYONS = [
-    {"name": "Butterbox", "unit_type_id": 3126},
-    {"name": "Claustral", "unit_type_id": 3127},
-    {"name": "Danae Brook", "unit_type_id": 3128},
-    {"name": "Deep Pass", "unit_type_id": 3129},
-    {"name": "Dione Dell", "unit_type_id": 3130},
-    {"name": "Empress", "unit_type_id": 3131},
-    {"name": "Fortress", "unit_type_id": 3132},
-    {"name": "Grand Canyon", "unit_type_id": 3133},
-    {"name": "Hole in the Wall", "unit_type_id": 3134},
-    {"name": "Juggler", "unit_type_id": 3137},
-    {"name": "Kalang", "unit_type_id": 3136},
-    {"name": "Kanangra Main", "unit_type_id": 3138},
-    {"name": "Malaita Point", "unit_type_id": 3149},
-    {"name": "Malaita Wall", "unit_type_id": 3148},
-    {"name": "Mount Portal", "unit_type_id": 3150},
-    {"name": "Narrow Neck", "unit_type_id": 3151},
-    {"name": "North Bowen", "unit_type_id": 3139},
-    {"name": "Other", "unit_type_id": 3186},
-    {"name": "River Caves", "unit_type_id": 3140},
-    {"name": "Rocky Creek / Twister", "unit_type_id": 3141},
-    {"name": "Serendipity", "unit_type_id": 3142},
-    {"name": "Starlight", "unit_type_id": 3143},
-    {"name": "Sweet Dreams", "unit_type_id": 3152},
-    {"name": "Tiger Snake", "unit_type_id": 3144},
-    {"name": "Whungee Wheengee", "unit_type_id": 3145},
-    {"name": "Wollangambe", "unit_type_id": 3153},
-    {"name": "Yileen", "unit_type_id": 3146},
+    {"name": "Empress",       "unit_type_id": 3131},
+    {"name": "Grand Canyon",  "unit_type_id": 3133},
+    {"name": "Narrow Neck",   "unit_type_id": 3151},
 ]
 
 # ================== SETUP ==================
 options = webdriver.ChromeOptions()
-options.add_argument("--headless=new")      # ← more stable in 2026 Chrome
+options.add_argument("--headless=new")
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 options.add_argument("--disable-gpu")
@@ -122,7 +99,7 @@ def navigate_to_date(target_date_display):
     return False
 
 # ================== MAIN SCAN ==================
-print(f"\n🚀 STARTING FULL SCAN — {len(CANYONS)} canyons × next {NUM_DAYS} days\n")
+print(f"\n🚀 STARTING SCAN — {len(CANYONS)} canyons (Empress, Grand Canyon, Narrow Neck) × next {NUM_DAYS} days\n")
 
 all_canyons_data = {}
 
@@ -185,10 +162,20 @@ for canyon in CANYONS:
                     "sold": sold_list,
                     "available": len(all_slots) - len(sold_list)
                 }
+
+                # Show actual booking times
                 if not sold_list:
                     print(" ✅ Fully Available!")
                 else:
-                    print(f" 🔴 {len(sold_list)} booked")
+                    formatted_times = []
+                    for s in sold_list:
+                        try:
+                            t = datetime.fromisoformat(s["time"].replace("Z", ""))
+                            formatted_times.append(t.strftime("%I:%M %p"))
+                        except:
+                            formatted_times.append(s["time"][11:16])
+                    print(f" 🔴 Booked at: {', '.join(formatted_times)}")
+
             except Exception as e:
                 print(f" ⚠️ Error reading slots: {e}")
                 canyon_data[target_date_display] = {"sold": [], "available": 0}
