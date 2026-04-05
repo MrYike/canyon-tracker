@@ -207,7 +207,7 @@ driver.quit()
 # ================== SAVE RESULTS ==================
 today_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-with open("canyons_data.json", "w", encoding="utf-8") as f:
+with open("data.json", "w", encoding="utf-8") as f:
     json.dump({
         "updated": today_str,
         "num_days": NUM_DAYS,
