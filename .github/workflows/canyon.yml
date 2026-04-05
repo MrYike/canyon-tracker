@@ -2,8 +2,8 @@ name: Canyon Tracker
 
 on:
   schedule:
-    - cron: '0 * * * *'      # every hour
-  workflow_dispatch:         # allows manual trigger
+    - cron: '0 * * * *'      # runs every hour
+  workflow_dispatch:         # you can also run it manually
 
 jobs:
   run-tracker:
@@ -35,13 +35,17 @@ jobs:
           CANYON_EMAIL: ${{ secrets.CANYON_EMAIL }}
           CANYON_PASSWORD: ${{ secrets.CANYON_PASSWORD }}
 
-      - name: Commit and push results
+      - name: Prepare data for GitHub Pages
+        run: |
+          # Your script creates canyons_data.json → we rename it to exactly what the app expects
+          cp canyons_data.json data.json
+
+      - name: Commit and push data.json
         run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           
-          # Add the two files your script actually creates
-          git add index.html canyons_data.json
+          git add data.json          # ← only this file matters for the app
           
           if git diff --staged --quiet; then
             echo "No changes to commit"
