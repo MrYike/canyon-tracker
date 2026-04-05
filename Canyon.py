@@ -1,7 +1,3 @@
-# ================== CANYON TRACKER - CLEAN VERSION ==================
-# For canyon-tracker repo only
-# Now scans ONLY: Empress, Grand Canyon, Narrow Neck
-
 import os
 import json
 from selenium import webdriver
@@ -15,18 +11,19 @@ import time
 URL = "https://nsw.rezexpert.com/nswctobookdtm?business_code=500551"
 EMAIL = os.environ.get("CANYON_EMAIL", "James@myadventuregroup.com.au")
 PASSWORD = os.environ.get("CANYON_PASSWORD", "")
+
 NUM_DAYS = 14
 
-# ================== ONLY THESE 3 CANYONS ==================
+# ONLY THESE 3 CANYONS
 CANYONS = [
-    {"name": "Empress",       "unit_type_id": 3131},
-    {"name": "Grand Canyon",  "unit_type_id": 3133},
     {"name": "Narrow Neck",   "unit_type_id": 3151},
+    {"name": "Grand Canyon",  "unit_type_id": 3133},
+    {"name": "Empress",       "unit_type_id": 3131},
 ]
 
 # ================== SETUP ==================
 options = webdriver.ChromeOptions()
-options.add_argument("--headless=new")
+options.add_argument("--headless")
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 options.add_argument("--disable-gpu")
@@ -83,7 +80,8 @@ def click_next_month():
 
 def navigate_to_date(target_date_display):
     target_date_full = target_date_display + "T00:00:00"
-    print(f" 📅 {target_date_display} ", end="")
+    print(f"   📅 {target_date_display} ", end="")
+
     for attempt in range(15):
         try:
             date_cell = driver.find_element(By.XPATH, f"//td[@date='{target_date_full}']")
@@ -99,18 +97,20 @@ def navigate_to_date(target_date_display):
     return False
 
 # ================== MAIN SCAN ==================
-print(f"\n🚀 STARTING SCAN — {len(CANYONS)} canyons (Empress, Grand Canyon, Narrow Neck) × next {NUM_DAYS} days\n")
+print(f"\n🚀 STARTING SCAN — {len(CANYONS)} canyons × next {NUM_DAYS} days\n")
 
 all_canyons_data = {}
 
 for canyon in CANYONS:
     name = canyon["name"]
     uid = canyon["unit_type_id"]
-    print(f"\n{'='*90}")
-    print(f"🏔️ SCANNING: {name}")
-    print(f"{'='*90}")
+
+    print(f"\n{'='*85}")
+    print(f"🏔️  SCANNING: {name}")
+    print(f"{'='*85}")
 
     canyon_data = {}
+
     try:
         driver.get(URL)
         time.sleep(7)
@@ -132,7 +132,7 @@ for canyon in CANYONS:
         print(f"✅ Selected {name}")
         time.sleep(5)
 
-        # Click Book
+        # Click Book button
         book_xpath = f"//div[@onclick=\"selectUnitType('nsw_cto_select_canyoning_location', {{iUnitTypeId:{uid}}});\"]"
         book_btn = driver.find_element(By.XPATH, book_xpath)
         driver.execute_script("arguments[0].click();", book_btn)
@@ -141,64 +141,36 @@ for canyon in CANYONS:
 
         # Scan dates
         target_dates = [(datetime.now() + timedelta(days=i)).strftime("%Y-%m-%d") for i in range(NUM_DAYS)]
+
         for target_date_display in target_dates:
             date_clicked = navigate_to_date(target_date_display)
+
             if not date_clicked:
-                canyon_data[target_date_display] = {"sold": [], "available": 0}
+                canyon_data[target_date_display] = {"sold": []}
                 continue
 
-            # Extract detailed booking info
+            # Extract bookings with proper time
             try:
                 all_slots = driver.find_elements(By.XPATH, "//td[@check_in_date]")
                 sold_list = []
+
                 for slot in all_slots:
                     check_in = slot.get_attribute("check_in_date")
                     slot_class = slot.get_attribute("class") or ""
                     if "Sold" in slot_class and check_in:
-                        # ================== NEW WHO EXTRACTION ==================
-                        who = "Unknown"
-                        attr = (
-                            slot.get_attribute("parent_client_label")
-                            or slot.get_attribute("title")
-                            or slot.get_attribute("data-original-title")
-                        )
-                        if attr and attr.strip():
-                            who = attr.strip()
-                        else:
-                            try:
-                                inner = slot.find_elements(By.XPATH, ".//*")
-                                for el in inner:
-                                    txt = el.text.strip()
-                                    if txt and len(txt) > 2:
-                                        who = txt
-                                        break
-                            except:
-                                pass
-                        # =====================================================
-
+                        who = slot.get_attribute("parent_client_label") or "Unknown"
                         sold_list.append({"time": check_in, "company": who})
 
-                canyon_data[target_date_display] = {
-                    "sold": sold_list,
-                    "available": len(all_slots) - len(sold_list)
-                }
+                canyon_data[target_date_display] = {"sold": sold_list}
 
-                # Show actual booking times
                 if not sold_list:
-                    print(" ✅ Fully Available!")
+                    print("      ✅ Fully Available!")
                 else:
-                    formatted_times = []
-                    for s in sold_list:
-                        try:
-                            t = datetime.fromisoformat(s["time"].replace("Z", ""))
-                            formatted_times.append(f"{t.strftime('%I:%M %p')} — {s['company']}")
-                        except:
-                            formatted_times.append(f"{s['time'][11:16]} — {s['company']}")
-                    print(f" 🔴 Booked at: {', '.join(formatted_times)}")
+                    print(f"      🔴 {len(sold_list)} booked")
 
             except Exception as e:
-                print(f" ⚠️ Error reading slots: {e}")
-                canyon_data[target_date_display] = {"sold": [], "available": 0}
+                print(f"      ⚠️ Error reading slots: {e}")
+                canyon_data[target_date_display] = {"sold": []}
 
     except Exception as e:
         print(f"❌ Failed processing {name}: {e}")
@@ -218,4 +190,64 @@ with open("canyons_data.json", "w", encoding="utf-8") as f:
     }, f, indent=2)
 
 print(f"\n✅ Saved canyons_data.json")
-print(f"\n🎉 SCAN COMPLETE!")
+
+# ================== GENERATE DETAILED HTML ==================
+print("Generating HTML report...")
+
+html = f"""<!DOCTYPE html>
+<html>
+<head>
+    <title>NSW Canyons Booking Status</title>
+    <meta http-equiv="refresh" content="1800">
+    <style>
+        body {{ font-family: Arial, sans-serif; max-width: 1100px; margin: 40px auto; padding: 20px; line-height: 1.6; }}
+        h1 {{ color: #2c3e50; text-align: center; }}
+        h2 {{ color: #34495e; border-bottom: 3px solid #3498db; padding-bottom: 10px; }}
+        .canyon {{ margin-bottom: 50px; }}
+        .day-section {{ margin-bottom: 30px; }}
+        table {{ width: 100%; border-collapse: collapse; margin: 15px 0; }}
+        th {{ background: #2c3e50; color: white; padding: 12px; text-align: left; }}
+        td {{ padding: 10px 12px; border-bottom: 1px solid #ddd; }}
+        tr:hover {{ background: #f8f9fa; }}
+        .updated {{ color: #7f8c8d; text-align: center; font-size: 15px; }}
+        .no-book {{ color: #27ae60; font-weight: bold; font-size: 1.15em; }}
+        .booked-count {{ color: #e74c3c; }}
+    </style>
+</head>
+<body>
+    <h1>🏔️ NSW Canyons Booking Status</h1>
+    <p class="updated">Last updated: {today_str} • Next {NUM_DAYS} days</p>
+"""
+
+for canyon_name, dates in all_canyons_data.items():
+    html += f'<div class="canyon"><h2>🏔️ {canyon_name}</h2>'
+    
+    for date_str, info in dates.items():
+        html += f'<div class="day-section"><h3>📅 {date_str}</h3>'
+        
+        sold_list = info.get("sold", [])
+        if not sold_list:
+            html += '<p class="no-book">✅ No bookings — Fully Available!</p>'
+        else:
+            html += f'<p class="booked-count">🔴 {len(sold_list)} bookings found</p>'
+            html += '<table><tr><th>Time</th><th>Booked By</th></tr>'
+            for slot in sold_list:
+                try:
+                    time_obj = datetime.strptime(slot["time"], "%Y-%m-%dT%H:%M:%S")
+                    time_str = time_obj.strftime("%I:%M %p")
+                    html += f'<tr><td>{time_str}</td><td>{slot["company"]}</td></tr>'
+                except:
+                    html += f'<tr><td>{slot.get("time", "Unknown")}</td><td>{slot.get("company", "Unknown")}</td></tr>'
+            html += '</table>'
+        
+        html += '</div>'
+    
+    html += '</div>'
+
+html += "</body></html>"
+
+with open("index.html", "w", encoding="utf-8") as f:
+    f.write(html)
+
+print("✅ Saved index.html")
+print(f"\n🎉 DONE! Open index.html to see the detailed report for Narrow Neck, Grand Canyon & Empress.")
