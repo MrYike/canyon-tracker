@@ -1,15 +1,1865 @@
 {
-  "updated": "2026-04-05 03:38:09",
+  "updated": "2026-04-05 04:36:51",
   "num_days": 14,
   "data": {
     "Butterbox": {
-      "error": "Message: \nStacktrace:\n#0 0x556dcebbda6a <unknown>\n#1 0x556dce5ccab5 <unknown>\n#2 0x556dce61f676 <unknown>\n#3 0x556dce61f8b1 <unknown>\n#4 0x556dce66a614 <unknown>\n#5 0x556dce6677b6 <unknown>\n#6 0x556dce612cbf <unknown>\n#7 0x556dce613a81 <unknown>\n#8 0x556dceb83a64 <unknown>\n#9 0x556dceb86951 <unknown>\n#10 0x556dceb7021e <unknown>\n#11 0x556dceb8751e <unknown>\n#12 0x556dceb56be0 <unknown>\n#13 0x556dcebaa9b8 <unknown>\n#14 0x556dcebaab88 <unknown>\n#15 0x556dcebbc4de <unknown>\n#16 0x7f288889caa4 <unknown>\n#17 0x7f2888929c6c <unknown>\n"
+      "2026-04-05": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-07": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-08": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-09": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 21
+      }
     },
     "Claustral": {
-      "error": "Message: \nStacktrace:\n#0 0x556dcebbda6a <unknown>\n#1 0x556dce5ccab5 <unknown>\n#2 0x556dce61f676 <unknown>\n#3 0x556dce61f8b1 <unknown>\n#4 0x556dce66a614 <unknown>\n#5 0x556dce6677b6 <unknown>\n#6 0x556dce612cbf <unknown>\n#7 0x556dce613a81 <unknown>\n#8 0x556dceb83a64 <unknown>\n#9 0x556dceb86951 <unknown>\n#10 0x556dceb7021e <unknown>\n#11 0x556dceb8751e <unknown>\n#12 0x556dceb56be0 <unknown>\n#13 0x556dcebaa9b8 <unknown>\n#14 0x556dcebaab88 <unknown>\n#15 0x556dcebbc4de <unknown>\n#16 0x7f288889caa4 <unknown>\n#17 0x7f2888929c6c <unknown>\n"
+      "2026-04-05": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-07": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-08": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-09": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 21
+      }
+    },
+    "Danae Brook": {
+      "2026-04-05": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-07": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-08": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-09": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 11
+      }
+    },
+    "Deep Pass": {
+      "2026-04-05": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-07": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-08": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-09": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 21
+      }
+    },
+    "Dione Dell": {
+      "2026-04-05": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-07": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-08": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-09": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-10": {
+        "sold": [
+          {
+            "time": "2026-04-10T10:00:00",
+            "company": "Roam Adventures and Training"
+          }
+        ],
+        "available": 10
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 11
+      }
+    },
+    "Empress": {
+      "2026-04-05": {
+        "sold": [
+          {
+            "time": "2026-04-05T10:00:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-05T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-05T11:30:00",
+            "company": "High n Wild"
+          },
+          {
+            "time": "2026-04-05T13:00:00",
+            "company": "High n Wild"
+          },
+          {
+            "time": "2026-04-05T13:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-05T14:00:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ],
+        "available": 20
+      },
+      "2026-04-06": {
+        "sold": [
+          {
+            "time": "2026-04-06T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-06T12:30:00",
+            "company": "Roam Adventures and Training"
+          },
+          {
+            "time": "2026-04-06T14:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ],
+        "available": 23
+      },
+      "2026-04-07": {
+        "sold": [
+          {
+            "time": "2026-04-07T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-07T12:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-07T13:00:00",
+            "company": "High n Wild"
+          },
+          {
+            "time": "2026-04-07T13:30:00",
+            "company": "Blue Mountains Adventure Company"
+          },
+          {
+            "time": "2026-04-07T14:00:00",
+            "company": "Blue Mountains Adventure Company"
+          },
+          {
+            "time": "2026-04-07T14:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ],
+        "available": 20
+      },
+      "2026-04-08": {
+        "sold": [
+          {
+            "time": "2026-04-08T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-08T11:30:00",
+            "company": "Blue Mountains Adventure Company"
+          },
+          {
+            "time": "2026-04-08T13:00:00",
+            "company": "High n Wild"
+          }
+        ],
+        "available": 23
+      },
+      "2026-04-09": {
+        "sold": [
+          {
+            "time": "2026-04-09T13:00:00",
+            "company": "High n Wild"
+          },
+          {
+            "time": "2026-04-09T14:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ],
+        "available": 24
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 26
+      },
+      "2026-04-11": {
+        "sold": [
+          {
+            "time": "2026-04-11T09:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-11T10:00:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-11T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-11T11:30:00",
+            "company": "High n Wild"
+          },
+          {
+            "time": "2026-04-11T12:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-11T13:00:00",
+            "company": "High n Wild"
+          },
+          {
+            "time": "2026-04-11T13:30:00",
+            "company": "Blue Mountains Adventure Company"
+          },
+          {
+            "time": "2026-04-11T14:00:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-11T14:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ],
+        "available": 17
+      },
+      "2026-04-12": {
+        "sold": [
+          {
+            "time": "2026-04-12T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-12T13:00:00",
+            "company": "High n Wild"
+          },
+          {
+            "time": "2026-04-12T14:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ],
+        "available": 23
+      },
+      "2026-04-13": {
+        "sold": [
+          {
+            "time": "2026-04-13T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-13T12:30:00",
+            "company": "High n Wild"
+          },
+          {
+            "time": "2026-04-13T13:00:00",
+            "company": "High n Wild"
+          },
+          {
+            "time": "2026-04-13T14:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ],
+        "available": 22
+      },
+      "2026-04-14": {
+        "sold": [
+          {
+            "time": "2026-04-14T13:00:00",
+            "company": "High n Wild"
+          }
+        ],
+        "available": 25
+      },
+      "2026-04-15": {
+        "sold": [
+          {
+            "time": "2026-04-15T12:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ],
+        "available": 25
+      },
+      "2026-04-16": {
+        "sold": [
+          {
+            "time": "2026-04-16T13:00:00",
+            "company": "High n Wild"
+          }
+        ],
+        "available": 25
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 26
+      },
+      "2026-04-18": {
+        "sold": [
+          {
+            "time": "2026-04-18T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-18T11:30:00",
+            "company": "High n Wild"
+          },
+          {
+            "time": "2026-04-18T12:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-18T13:00:00",
+            "company": "High n Wild"
+          },
+          {
+            "time": "2026-04-18T13:30:00",
+            "company": "Blue Mountains Adventure Company"
+          },
+          {
+            "time": "2026-04-18T14:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ],
+        "available": 20
+      }
+    },
+    "Fortress": {
+      "2026-04-05": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-07": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-08": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-09": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 21
+      }
+    },
+    "Grand Canyon": {
+      "2026-04-05": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-07": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-08": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-09": {
+        "sold": [
+          {
+            "time": "2026-04-09T13:00:00",
+            "company": "Close Contours Pty Limited"
+          }
+        ],
+        "available": 20
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 21
+      }
+    },
+    "Hole in the Wall": {
+      "2026-04-05": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-07": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-08": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-09": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 11
+      }
+    },
+    "Juggler": {
+      "2026-04-05": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-07": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-08": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-09": {
+        "sold": [
+          {
+            "time": "2026-04-09T08:30:00",
+            "company": "Close Contours Pty Limited"
+          }
+        ],
+        "available": 20
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 21
+      }
+    },
+    "Kalang": {
+      "2026-04-05": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-07": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-08": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-09": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 11
+      }
+    },
+    "Kanangra Main": {
+      "2026-04-05": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-07": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-08": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-09": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 11
+      }
+    },
+    "Malaita Point": {
+      "2026-04-05": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-07": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-08": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-09": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 21
+      }
+    },
+    "Malaita Wall": {
+      "2026-04-05": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-07": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-08": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-09": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 21
+      }
+    },
+    "Mount Portal": {
+      "2026-04-05": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-07": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-08": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-09": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 21
+      }
+    },
+    "Narrow Neck": {
+      "2026-04-05": {
+        "sold": [
+          {
+            "time": "2026-04-05T08:00:00",
+            "company": "High n Wild"
+          },
+          {
+            "time": "2026-04-05T09:00:00",
+            "company": "High n Wild"
+          }
+        ],
+        "available": 19
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-07": {
+        "sold": [
+          {
+            "time": "2026-04-07T09:00:00",
+            "company": "High n Wild"
+          }
+        ],
+        "available": 20
+      },
+      "2026-04-08": {
+        "sold": [
+          {
+            "time": "2026-04-08T09:00:00",
+            "company": "High n Wild"
+          }
+        ],
+        "available": 20
+      },
+      "2026-04-09": {
+        "sold": [
+          {
+            "time": "2026-04-09T09:00:00",
+            "company": "High n Wild"
+          }
+        ],
+        "available": 20
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-11": {
+        "sold": [
+          {
+            "time": "2026-04-11T08:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-11T09:00:00",
+            "company": "High n Wild"
+          }
+        ],
+        "available": 19
+      },
+      "2026-04-12": {
+        "sold": [
+          {
+            "time": "2026-04-12T09:00:00",
+            "company": "High n Wild"
+          }
+        ],
+        "available": 20
+      },
+      "2026-04-13": {
+        "sold": [
+          {
+            "time": "2026-04-13T09:00:00",
+            "company": "High n Wild"
+          }
+        ],
+        "available": 20
+      },
+      "2026-04-14": {
+        "sold": [
+          {
+            "time": "2026-04-14T09:00:00",
+            "company": "High n Wild"
+          }
+        ],
+        "available": 20
+      },
+      "2026-04-15": {
+        "sold": [
+          {
+            "time": "2026-04-15T08:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ],
+        "available": 20
+      },
+      "2026-04-16": {
+        "sold": [
+          {
+            "time": "2026-04-16T09:00:00",
+            "company": "High n Wild"
+          }
+        ],
+        "available": 20
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-18": {
+        "sold": [
+          {
+            "time": "2026-04-18T08:00:00",
+            "company": "High n Wild"
+          },
+          {
+            "time": "2026-04-18T08:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-18T09:00:00",
+            "company": "High n Wild"
+          }
+        ],
+        "available": 18
+      }
+    },
+    "North Bowen": {
+      "2026-04-05": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-07": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-08": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-09": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 21
+      }
+    },
+    "Other": {
+      "2026-04-05": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-07": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-08": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-09": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 11
+      }
+    },
+    "River Caves": {
+      "2026-04-05": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-07": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-08": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-09": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 11
+      }
+    },
+    "Rocky Creek / Twister": {
+      "2026-04-05": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-07": {
+        "sold": [
+          {
+            "time": "2026-04-07T10:00:00",
+            "company": "Blue Mountains Adventure Company"
+          }
+        ],
+        "available": 20
+      },
+      "2026-04-08": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-09": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 21
+      }
+    },
+    "Serendipity": {
+      "2026-04-05": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-07": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-08": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-09": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 21
+      }
+    },
+    "Starlight": {
+      "2026-04-05": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-07": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-08": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-09": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 11
+      }
+    },
+    "Sweet Dreams": {
+      "2026-04-05": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-07": {
+        "sold": [
+          {
+            "time": "2026-04-07T09:00:00",
+            "company": "Close Contours Pty Limited"
+          }
+        ],
+        "available": 10
+      },
+      "2026-04-08": {
+        "sold": [
+          {
+            "time": "2026-04-08T09:00:00",
+            "company": "Close Contours Pty Limited"
+          }
+        ],
+        "available": 10
+      },
+      "2026-04-09": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 11
+      }
+    },
+    "Tiger Snake": {
+      "2026-04-05": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-07": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-08": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-09": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 11
+      }
+    },
+    "Whungee Wheengee": {
+      "2026-04-05": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-07": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-08": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-09": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 11
+      }
+    },
+    "Wollangambe": {
+      "2026-04-05": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-07": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-08": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-09": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 21
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 21
+      }
     },
     "Yileen": {
-      "error": "Message: \nStacktrace:\n#0 0x556dcebbda6a <unknown>\n#1 0x556dce5ccab5 <unknown>\n#2 0x556dce61f676 <unknown>\n#3 0x556dce61f8b1 <unknown>\n#4 0x556dce66a614 <unknown>\n#5 0x556dce6677b6 <unknown>\n#6 0x556dce612cbf <unknown>\n#7 0x556dce613a81 <unknown>\n#8 0x556dceb83a64 <unknown>\n#9 0x556dceb86951 <unknown>\n#10 0x556dceb7021e <unknown>\n#11 0x556dceb8751e <unknown>\n#12 0x556dceb56be0 <unknown>\n#13 0x556dcebaa9b8 <unknown>\n#14 0x556dcebaab88 <unknown>\n#15 0x556dcebbc4de <unknown>\n#16 0x7f288889caa4 <unknown>\n#17 0x7f2888929c6c <unknown>\n"
+      "2026-04-05": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-06": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-07": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-08": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-09": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-10": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-11": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-12": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": 11
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": 11
+      }
     }
   }
 }
