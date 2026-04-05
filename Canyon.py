@@ -1,201 +1,189 @@
-# ================== CANYON TRACKER - CLEAN VERSION ==================
-# For canyon-tracker repo only
-# Now scans ONLY: Empress, Grand Canyon, Narrow Neck
-
-import os
-import json
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.action_chains import ActionChains  # ✅ ADDED
 from datetime import datetime, timedelta
 import time
 
 # ================== CONFIG ==================
 URL = "https://nsw.rezexpert.com/nswctobookdtm?business_code=500551"
-EMAIL = os.environ.get("CANYON_EMAIL", "James@myadventuregroup.com.au")
-PASSWORD = os.environ.get("CANYON_PASSWORD", "")
+EMAIL = "James@myadventuregroup.com.au"
+PASSWORD = "yfUR^8a^XAqhpt^T"
+
 NUM_DAYS = 14
 
-# ================== ONLY THESE 3 CANYONS ==================
 CANYONS = [
-    {"name": "Empress",       "unit_type_id": 3131},
-    {"name": "Grand Canyon",  "unit_type_id": 3133},
-    {"name": "Narrow Neck",   "unit_type_id": 3151},
+    {"name": "Butterbox",           "unit_type_id": 3126},
+    {"name": "Claustral",           "unit_type_id": 3127},
+    {"name": "Danae Brook",         "unit_type_id": 3128},
+    {"name": "Deep Pass",           "unit_type_id": 3129},
+    {"name": "Dione Dell",          "unit_type_id": 3130},
+    {"name": "Empress",             "unit_type_id": 3131},
+    {"name": "Fortress",            "unit_type_id": 3132},
+    {"name": "Grand Canyon",        "unit_type_id": 3133},
+    {"name": "Hole in the Wall",    "unit_type_id": 3134},
+    {"name": "Juggler",             "unit_type_id": 3137},
+    {"name": "Kalang",              "unit_type_id": 3136},
+    {"name": "Kanangra Main",       "unit_type_id": 3138},
+    {"name": "Malaita Point",       "unit_type_id": 3149},
+    {"name": "Malaita Wall",        "unit_type_id": 3148},
+    {"name": "Mount Portal",        "unit_type_id": 3150},
+    {"name": "Narrow Neck",         "unit_type_id": 3151},
+    {"name": "North Bowen",         "unit_type_id": 3139},
+    {"name": "Other",               "unit_type_id": 3186},
+    {"name": "River Caves",         "unit_type_id": 3140},
+    {"name": "Rocky Creek / Twister","unit_type_id": 3141},
+    {"name": "Serendipity",         "unit_type_id": 3142},
+    {"name": "Starlight",           "unit_type_id": 3143},
+    {"name": "Sweet Dreams",        "unit_type_id": 3152},
+    {"name": "Tiger Snake",         "unit_type_id": 3144},
+    {"name": "Whungee Wheengee",    "unit_type_id": 3145},
+    {"name": "Wollangambe",         "unit_type_id": 3153},
+    {"name": "Yileen",              "unit_type_id": 3146},
 ]
+
+NEXT_MONTH_XPATH = "//div[contains(@style, 'border-left: 20px solid rgb(255, 255, 255)')]"
 
 # ================== SETUP ==================
 options = webdriver.ChromeOptions()
-options.add_argument("--headless=new")
 options.add_argument("--no-sandbox")
-options.add_argument("--disable-dev-shm-usage")
 options.add_argument("--disable-gpu")
-options.add_argument("--window-size=1920,1080")
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 driver.get(URL)
-time.sleep(8)
+time.sleep(6)
 
-# Cookie banner
+# Cookie + Terms
 try:
     driver.find_element(By.LINK_TEXT, "Got it!").click()
-    print("✅ Clicked cookie banner")
-    time.sleep(2)
-except:
-    pass
+except: pass
+time.sleep(2)
 
-# Accept terms
 try:
-    radio = driver.find_element(By.NAME, "radPreConditionAccept")
-    driver.execute_script("arguments[0].click();", radio)
-    time.sleep(2)
-    accept_btn = driver.find_element(By.ID, "divPreConditionsClose")
-    driver.execute_script("arguments[0].click();", accept_btn)
-    print("✅ Accepted terms!")
-    time.sleep(5)
-except Exception as e:
-    print(f"⚠️ Terms error: {e}")
+    driver.find_element(By.NAME, "radPreConditionAccept").click()
+    time.sleep(1)
+    driver.find_element(By.ID, "divPreConditionsClose").click()
+except: pass
+time.sleep(3)
 
 # Login
-try:
-    driver.find_element(By.PARTIAL_LINK_TEXT, "ogin").click()
-    time.sleep(5)
-    driver.find_element(By.ID, "txtEmail").send_keys(EMAIL)
-    driver.find_element(By.ID, "txtPassword").send_keys(PASSWORD)
-    login_btn = driver.find_element(By.ID, "btnLoginNext")
-    driver.execute_script("arguments[0].click();", login_btn)
-    print("✅ Logged in!")
-    time.sleep(8)
-except Exception as e:
-    print(f"❌ Login failed: {e}")
-    driver.quit()
-    exit(1)
+driver.find_element(By.PARTIAL_LINK_TEXT, "ogin").click()
+time.sleep(3)
+driver.find_element(By.ID, "txtEmail").send_keys(EMAIL)
+driver.find_element(By.ID, "txtPassword").send_keys(PASSWORD)
+driver.find_element(By.ID, "btnLoginNext").click()
+print("✅ Logged in successfully!")
+time.sleep(6)
 
-# ================== HELPER FUNCTIONS ==================
-def click_next_month():
-    try:
-        next_btn = driver.find_element(By.XPATH, "//div[contains(@style, 'border-left: 20px solid rgb(255, 255, 255)')]")
-        driver.execute_script("arguments[0].click();", next_btn)
-        time.sleep(4)
-        return True
-    except:
-        return False
+print(f"\n🚀 STARTING SCAN — {len(CANYONS)} canyons × {NUM_DAYS} days\n")
 
-def navigate_to_date(target_date_display):
-    target_date_full = target_date_display + "T00:00:00"
-    print(f" 📅 {target_date_display} ", end="")
-    for attempt in range(15):
-        try:
-            date_cell = driver.find_element(By.XPATH, f"//td[@date='{target_date_full}']")
-            driver.execute_script("arguments[0].click();", date_cell)
-            time.sleep(6)
-            print("✅")
-            return True
-        except:
-            if not click_next_month():
-                break
-            time.sleep(2)
-    print("⚠️ Failed")
-    return False
-
-# ================== MAIN SCAN ==================
-print(f"\n🚀 STARTING SCAN — {len(CANYONS)} canyons (Empress, Grand Canyon, Narrow Neck) × next {NUM_DAYS} days\n")
-
-all_canyons_data = {}
+actions = ActionChains(driver)  # ✅ ADDED
 
 for canyon in CANYONS:
     name = canyon["name"]
     uid = canyon["unit_type_id"]
-    print(f"\n{'='*90}")
-    print(f"🏔️ SCANNING: {name}")
-    print(f"{'='*90}")
 
-    canyon_data = {}
+    print(f"\n{'='*95}")
+    print(f"🏔️  {name} (ID: {uid})")
+    print(f"{'='*95}")
+
     try:
         driver.get(URL)
-        time.sleep(7)
+        time.sleep(6)
 
-        # Re-accept terms if needed
         try:
-            radio = driver.find_element(By.NAME, "radPreConditionAccept")
-            driver.execute_script("arguments[0].click();", radio)
-            time.sleep(2)
-            accept_btn = driver.find_element(By.ID, "divPreConditionsClose")
-            driver.execute_script("arguments[0].click();", accept_btn)
-            time.sleep(4)
+            driver.find_element(By.NAME, "radPreConditionAccept").click()
+            time.sleep(1)
+            driver.find_element(By.ID, "divPreConditionsClose").click()
+            time.sleep(3)
         except:
             pass
 
-        # Select canyon
         canyon_row = driver.find_element(By.XPATH, f"//div[@unit_type_id='{uid}']")
         driver.execute_script("arguments[0].click();", canyon_row)
         print(f"✅ Selected {name}")
         time.sleep(5)
 
-        # Click Book
         book_xpath = f"//div[@onclick=\"selectUnitType('nsw_cto_select_canyoning_location', {{iUnitTypeId:{uid}}});\"]"
         book_btn = driver.find_element(By.XPATH, book_xpath)
         driver.execute_script("arguments[0].click();", book_btn)
-        print(f"✅ Clicked Book")
-        time.sleep(7)
+        print(f"✅ Clicked Book for {name}")
+        time.sleep(6)
 
-        # Scan dates
-        target_dates = [(datetime.now() + timedelta(days=i)).strftime("%Y-%m-%d") for i in range(NUM_DAYS)]
-        for target_date_display in target_dates:
-            date_clicked = navigate_to_date(target_date_display)
+        for day_offset in range(NUM_DAYS):
+            target_date = (datetime.now() + timedelta(days=day_offset)).strftime("%Y-%m-%dT00:00:00")
+            target_date_display = (datetime.now() + timedelta(days=day_offset)).strftime("%Y-%m-%d")
+
+            print(f"   📅 {target_date_display} ", end="")
+
+            date_clicked = False
+            for attempt in range(6):
+                try:
+                    date_cell = driver.find_element(By.XPATH, f"//td[@date='{target_date}']")
+                    driver.execute_script("arguments[0].click();", date_cell)
+                    time.sleep(5)
+                    date_clicked = True
+                    print("✅")
+                    break
+                except:
+                    if attempt < 5:
+                        try:
+                            next_btn = driver.find_element(By.XPATH, NEXT_MONTH_XPATH)
+                            driver.execute_script("arguments[0].click();", next_btn)
+                            print("→", end=" ")
+                            time.sleep(4)
+                        except:
+                            time.sleep(1)
+
             if not date_clicked:
-                canyon_data[target_date_display] = {"sold": [], "available": 0}
+                print("⚠️ Could not reach date")
                 continue
 
-            # Extract detailed booking info
             try:
-                all_slots = driver.find_elements(By.XPATH, "//td[@check_in_date]")
-                sold_list = []
-                for slot in all_slots:
-                    check_in = slot.get_attribute("check_in_date")
-                    slot_class = slot.get_attribute("class") or ""
-                    if "Sold" in slot_class and check_in:
-                        who = slot.get_attribute("parent_client_label") or "Unknown"
-                        sold_list.append({"time": check_in, "company": who})
-
-                canyon_data[target_date_display] = {
-                    "sold": sold_list,
-                    "available": len(all_slots) - len(sold_list)
-                }
-
-                # Show actual booking times
-                if not sold_list:
-                    print(" ✅ Fully Available!")
+                sold_slots = driver.find_elements(By.XPATH, "//td[contains(@class, 'Sold')]")
+                if not sold_slots:
+                    print("      ✅ No bookings — Fully available!")
                 else:
-                    formatted_times = []
-                    for s in sold_list:
+                    print(f"      🔴 {len(sold_slots)} booked slot(s)")
+
+                    for slot in sold_slots[:8]:
+                        check_in = slot.get_attribute("check_in_date")
+
+                        # ✅ HOVER (so name loads)
                         try:
-                            t = datetime.fromisoformat(s["time"].replace("Z", ""))
-                            formatted_times.append(t.strftime("%I:%M %p"))
+                            actions.move_to_element(slot).perform()
+                            time.sleep(0.4)
                         except:
-                            formatted_times.append(s["time"][11:16])
-                    print(f" 🔴 Booked at: {', '.join(formatted_times)}")
+                            pass
+
+                        # ✅ GET NAME (multiple fallbacks)
+                        who = (
+                            slot.get_attribute("parent_client_label")
+                            or slot.get_attribute("title")
+                            or slot.get_attribute("data-original-title")
+                            or slot.text
+                            or "Unknown"
+                        )
+
+                        # ✅ CLEAN NAME
+                        if who:
+                            who = who.replace("Booked by:", "").strip()
+
+                        try:
+                            t = datetime.strptime(check_in, "%Y-%m-%dT%H:%M:%S").strftime("%I:%M %p")
+                            print(f"         {t} — {who}")
+                        except:
+                            print(f"         {check_in} — {who}")
 
             except Exception as e:
-                print(f" ⚠️ Error reading slots: {e}")
-                canyon_data[target_date_display] = {"sold": [], "available": 0}
+                print(f"      ⚠️ Error reading slots: {str(e)[:80]}")
 
     except Exception as e:
-        print(f"❌ Failed processing {name}: {e}")
-        canyon_data = {"error": str(e)}
+        print(f"❌ Error with {name}: {str(e)[:120]}")
 
-    all_canyons_data[name] = canyon_data
+    print(f"   ↩️ Finished {name}\n")
 
+print("\n🎉 FULL SCAN COMPLETED!")
+input("\nPress Enter to close the browser...")
 driver.quit()
-
-# ================== SAVE JSON ==================
-today_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-with open("canyons_data.json", "w", encoding="utf-8") as f:
-    json.dump({
-        "updated": today_str,
-        "num_days": NUM_DAYS,
-        "data": all_canyons_data
-    }, f, indent=2)
-
-print(f"\n✅ Saved canyons_data.json")
-print(f"\n🎉 SCAN COMPLETE!")
