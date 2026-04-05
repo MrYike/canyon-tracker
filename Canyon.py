@@ -8,7 +8,6 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.action_chains import ActionChains  # ✅ ADDED
 from datetime import datetime, timedelta
 import time
 
@@ -36,8 +35,6 @@ options.add_argument("--window-size=1920,1080")
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 driver.get(URL)
 time.sleep(8)
-
-actions = ActionChains(driver)  # ✅ ADDED
 
 # Cookie banner
 try:
@@ -158,25 +155,26 @@ for canyon in CANYONS:
                     check_in = slot.get_attribute("check_in_date")
                     slot_class = slot.get_attribute("class") or ""
                     if "Sold" in slot_class and check_in:
-
-                        # ✅ HOVER so name loads
-                        try:
-                            actions.move_to_element(slot).perform()
-                            time.sleep(0.3)
-                        except:
-                            pass
-
-                        # ✅ GET NAME (same logic as working script)
-                        who = (
+                        # ================== NEW WHO EXTRACTION ==================
+                        who = "Unknown"
+                        attr = (
                             slot.get_attribute("parent_client_label")
                             or slot.get_attribute("title")
                             or slot.get_attribute("data-original-title")
-                            or slot.text
-                            or "Unknown"
                         )
-
-                        if who:
-                            who = who.replace("Booked by:", "").strip()
+                        if attr and attr.strip():
+                            who = attr.strip()
+                        else:
+                            try:
+                                inner = slot.find_elements(By.XPATH, ".//*")
+                                for el in inner:
+                                    txt = el.text.strip()
+                                    if txt and len(txt) > 2:
+                                        who = txt
+                                        break
+                            except:
+                                pass
+                        # =====================================================
 
                         sold_list.append({"time": check_in, "company": who})
 
@@ -193,9 +191,9 @@ for canyon in CANYONS:
                     for s in sold_list:
                         try:
                             t = datetime.fromisoformat(s["time"].replace("Z", ""))
-                            formatted_times.append(t.strftime("%I:%M %p"))
+                            formatted_times.append(f"{t.strftime('%I:%M %p')} — {s['company']}")
                         except:
-                            formatted_times.append(s["time"][11:16])
+                            formatted_times.append(f"{s['time'][11:16]} — {s['company']}")
                     print(f" 🔴 Booked at: {', '.join(formatted_times)}")
 
             except Exception as e:
