@@ -29,10 +29,9 @@ options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 options.add_argument("--disable-gpu")
 options.add_argument("--window-size=1920,1080")
-options.add_argument("--disable-blink-features=AutomationControlled")
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-wait = WebDriverWait(driver, 15)
+wait = WebDriverWait(driver, 12)  # slightly tighter wait
 
 driver.get(URL)
 wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
@@ -41,7 +40,7 @@ time.sleep(3)
 # Cookie banner
 try:
     wait.until(EC.element_to_be_clickable((By.LINK_TEXT, "Got it!"))).click()
-    print("✅ Clicked cookie banner")
+    print("✅ Cookie banner")
     time.sleep(1)
 except:
     pass
@@ -53,10 +52,10 @@ try:
     time.sleep(1)
     accept_btn = driver.find_element(By.ID, "divPreConditionsClose")
     driver.execute_script("arguments[0].click();", accept_btn)
-    print("✅ Accepted terms")
+    print("✅ Terms accepted")
     time.sleep(4)
-except Exception as e:
-    print(f"Terms skipped: {e}")
+except:
+    pass
 
 # Login
 try:
@@ -73,52 +72,32 @@ except Exception as e:
     driver.quit()
     exit(1)
 
-# ================== ROBUST NEXT MONTH HELPER ==================
+# ================== ROBUST NEXT MONTH (now primary is aria-label) ==================
 def click_next_month():
-    """Multiple fallback selectors for the 'next month' arrow"""
     selectors = [
-        "//div[contains(@style, 'border-left: 20px solid rgb(255, 255, 255)')]",  # old one
-        "//button[contains(@aria-label, 'Next') or contains(@title, 'Next')]",
-        "//div[contains(@class, 'calendar')]//button[contains(text(), '›') or contains(@aria-label, 'next')]",
-        "//img[contains(@src, 'next') or contains(@alt, 'next')]/parent::div",
-        "//div[@role='button' and contains(@style, 'arrow')]",
+        "//div[@aria-label='Next Month']",           # ← most reliable for RezExpert
+        "//button[contains(@aria-label, 'Next')]",
+        "//div[contains(@style, 'border-left: 20px solid rgb(255, 255, 255)')]",
+        "//button[contains(@title, 'Next') or contains(text(), '›')]",
     ]
     for xpath in selectors:
         try:
             btn = wait.until(EC.element_to_be_clickable((By.XPATH, xpath)))
             driver.execute_script("arguments[0].click();", btn)
-            time.sleep(3)
-            print("   → Clicked next month")
+            time.sleep(2.5)
+            print("   → Next month clicked")
             return True
         except:
             continue
-    print("   ⚠️  Could not find next-month button")
+    print("   ⚠️  Next-month button not found")
     return False
 
-def navigate_to_date(target_date_display):
-    target_date_full = target_date_display + "T00:00:00"
-    print(f"   {target_date_display} ", end="")
-
-    for attempt in range(20):  # increased attempts
-        try:
-            date_cell = wait.until(
-                EC.element_to_be_clickable((By.XPATH, f"//td[@date='{target_date_full}']"))
-            )
-            driver.execute_script("arguments[0].click();", date_cell)
-            time.sleep(5)
-            print("✅")
-            return True
-        except:
-            if not click_next_month():
-                break
-            time.sleep(1)
-    print("❌ Failed to reach date")
-    return False
-
-# ================== MAIN SCAN ==================
+# ================== MAIN SCAN (SEQUENTIAL NAVIGATION) ==================
 print(f"\n🚀 STARTING SCAN — {len(CANYONS)} canyons × next {NUM_DAYS} days\n")
 
 all_canyons_data = {}
+
+target_dates = [(datetime.now() + timedelta(days=i)).strftime("%Y-%m-%d") for i in range(NUM_DAYS)]
 
 for canyon in CANYONS:
     name = canyon["name"]
@@ -149,16 +128,38 @@ for canyon in CANYONS:
         print("✅ Clicked Book")
         time.sleep(7)
 
-        # Scan dates
-        target_dates = [(datetime.now() + timedelta(days=i)).strftime("%Y-%m-%d") for i in range(NUM_DAYS)]
-
+        last_month = None
         for target_date_display in target_dates:
-            date_clicked = navigate_to_date(target_date_display)
+            print(f"   {target_date_display} ", end="")
 
-            if not date_clicked:
+            target_full = target_date_display + "T00:00:00"
+
+            # Try to click the date (up to 3 attempts with next-month if needed)
+            success = False
+            for attempt in range(4):
+                try:
+                    date_cell = wait.until(
+                        EC.element_to_be_clickable((By.XPATH, f"//td[@date='{target_full}']"))
+                    )
+                    driver.execute_script("arguments[0].click();", date_cell)
+                    time.sleep(4)
+                    print("✅")
+                    success = True
+                    break
+                except:
+                    if attempt == 0 and last_month is None:
+                        # First date of this canyon — just try next month once if needed
+                        click_next_month()
+                    elif attempt < 3:
+                        click_next_month()
+                    time.sleep(1)
+
+            if not success:
+                print("❌")
                 canyon_data[target_date_display] = {"sold": [], "available": [], "all_slots": []}
                 continue
 
+            # Parse slots
             try:
                 all_slots = driver.find_elements(By.XPATH, "//td[@check_in_date]")
                 sold_list = []
@@ -184,17 +185,19 @@ for canyon in CANYONS:
                 }
 
             except Exception as e:
-                print(f"      Error parsing slots: {e}")
+                print(f"      Parse error: {e}")
                 canyon_data[target_date_display] = {"sold": [], "available": [], "all_slots": []}
 
+            last_month = target_date_display[:7]  # track month for next iteration
+
     except Exception as e:
-        print(f"❌ Failed processing {name}: {e}")
+        print(f"❌ Failed {name}: {e}")
 
     all_canyons_data[name] = canyon_data
 
 driver.quit()
 
-# ================== SAVE DATA.JSON ==================
+# ================== SAVE ==================
 today_str = datetime.now().strftime("%Y-%m-%d %H:%M")
 
 with open("data.json", "w", encoding="utf-8") as f:
@@ -204,39 +207,4 @@ with open("data.json", "w", encoding="utf-8") as f:
         "data": all_canyons_data
     }, f, indent=2)
 
-print(f"\n✅ Saved data.json — {len(all_canyons_data)} canyons")
-
-# (Your existing index.html generation code can stay at the bottom if you still use the GitHub Pages view)
-
-html = f"""<!DOCTYPE html>
-<html>
-<head>
-    <title>Canyon Bookings</title>
-    <meta http-equiv="refresh" content="3600">
-    <style>
-        body {{ font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 20px; line-height: 1.5; }}
-        h1 {{ color: #2c3e50; text-align: center; }}
-        h2 {{ color: #c45e2a; border-bottom: 3px solid #c45e2a; padding-bottom: 8px; margin-top: 40px; }}
-        h3 {{ color: #34495e; margin-top: 16px; }}
-        table {{ width: 100%; border-collapse: collapse; margin: 10px 0; }}
-        th {{ background: #2c3e50; color: white; padding: 10px; text-align: left; }}
-        td {{ padding: 10px; border-bottom: 1px solid #ddd; }}
-        tr:hover {{ background: #f8f9fa; }}
-        .updated {{ color: #7f8c8d; font-size: 14px; text-align: center; }}
-        .no-book {{ color: #27ae60; font-weight: bold; }}
-        .booked-count {{ color: #e74c3c; font-weight: bold; }}
-        .day-section {{ margin-bottom: 20px; }}
-    </style>
-</head>
-<body>
-    <h1>🏔️ Canyon Bookings</h1>
-    <p class="updated">Last updated: {today_str} • Next {NUM_DAYS} days</p>
-    {all_days_html}
-</body>
-</html>"""
-
-with open("index.html", "w", encoding="utf-8") as f:
-    f.write(html)
-
-print("✅ Saved index.html")
-print("\n🎉 SCAN COMPLETE!")
+print(f"\n✅ FINISHED — data.json saved ({len(all_canyons_data)} canyons)")
