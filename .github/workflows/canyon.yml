@@ -2,8 +2,8 @@ name: Canyon Tracker
 
 on:
   schedule:
-    - cron: '0 * * * *'      # runs every hour
-  workflow_dispatch:         # you can also run it manually
+    - cron: '0 * * * *'
+  workflow_dispatch:
 
 jobs:
   run-tracker:
@@ -13,8 +13,7 @@ jobs:
     timeout-minutes: 120
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -29,24 +28,17 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable
 
-      - name: Run Canyon Tracker
+      - name: Run canyon tracker
         run: python Canyon.py
         env:
           CANYON_EMAIL: ${{ secrets.CANYON_EMAIL }}
           CANYON_PASSWORD: ${{ secrets.CANYON_PASSWORD }}
 
-      - name: Prepare data for GitHub Pages
-        run: |
-          # Your script creates canyons_data.json → we rename it to exactly what the app expects
-          cp canyons_data.json data.json
-
-      - name: Commit and push data.json
+      - name: Commit results
         run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
-          
-          git add data.json          # ← only this file matters for the app
-          
+          git add index.html data.json
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
