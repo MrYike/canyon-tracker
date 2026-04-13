@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-12 22:14",
+  "updated": "2026-04-13 01:17",
   "num_days": 14,
   "data": {
     "Narrow Neck": {
@@ -74,7 +74,149 @@
         "all_slots": []
       }
     },
-    "Grand Canyon": {},
-    "Empress": {}
+    "Grand Canyon": {
+      "2026-04-12": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-19": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-20": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-21": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-22": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-23": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-24": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-25": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      }
+    },
+    "Empress": {
+      "2026-04-12": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-13": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-14": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-15": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-16": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-17": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-18": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-19": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-20": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-21": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-22": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-23": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-24": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      },
+      "2026-04-25": {
+        "sold": [],
+        "available": [],
+        "all_slots": []
+      }
+    }
   }
 }
