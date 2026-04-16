@@ -32,7 +32,7 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 driver.get(URL)
 time.sleep(8)
 
-# Login part
+# Cookie + Terms + Login
 try:
     driver.find_element(By.LINK_TEXT, "Got it!").click()
     time.sleep(2)
@@ -63,17 +63,17 @@ except Exception as e:
     driver.quit()
     exit(1)
 
-# ================== IMPROVED HELPER FUNCTIONS ==================
+# ================== HELPER FUNCTIONS ==================
 def click_next_month():
     xpaths = [
         "//div[contains(@style, 'border-left: 20px solid rgb(255, 255, 255)')]",
-        "//a[contains(@class, 'next')]",
-        "//span[contains(@class, 'next')]",
-        "//div[contains(text(), '›') or contains(text(), '→')]"
+        "//a[contains(@class,'next')]", 
+        "//span[contains(@class,'next')]",
+        "//div[contains(text(),'›')]"
     ]
-    for xpath in xpaths:
+    for xp in xpaths:
         try:
-            btn = driver.find_element(By.XPATH, xpath)
+            btn = driver.find_element(By.XPATH, xp)
             driver.execute_script("arguments[0].click();", btn)
             time.sleep(3)
             return True
@@ -83,21 +83,35 @@ def click_next_month():
 
 def navigate_to_date(target_date_display):
     print(f"   📅 {target_date_display} ", end="")
-    formats = [target_date_display, target_date_display + "T00:00:00"]
-
-    for date_str in formats:
-        for attempt in range(10):   # allow more jumps
-            try:
-                date_cell = driver.find_element(By.XPATH, f"//td[@date='{date_str}']")
-                driver.execute_script("arguments[0].click();", date_cell)
-                time.sleep(4)
-                print("✅")
-                return True
-            except:
-                if not click_next_month():
-                    time.sleep(1)
-                else:
-                    time.sleep(2)
+    
+    # Try clicking by visible day number (most reliable method)
+    day_number = target_date_display[-2:]  # e.g. "15" from "2026-04-15"
+    
+    for attempt in range(12):  # allow up to 12 month jumps
+        try:
+            # Try to click the day cell by its visible number
+            day_cell = driver.find_element(By.XPATH, f"//td[contains(@class,'day') and text()='{int(day_number)}']")
+            driver.execute_script("arguments[0].click();", day_cell)
+            time.sleep(5)
+            print("✅")
+            return True
+        except:
+            # Fallback: try @date attribute
+            for fmt in [target_date_display, target_date_display + "T00:00:00"]:
+                try:
+                    cell = driver.find_element(By.XPATH, f"//td[@date='{fmt}']")
+                    driver.execute_script("arguments[0].click();", cell)
+                    time.sleep(5)
+                    print("✅")
+                    return True
+                except:
+                    pass
+            
+            # Click next month if needed
+            if not click_next_month():
+                break
+            time.sleep(2)
+    
     print("⚠️ Could not reach")
     return False
 
@@ -142,7 +156,7 @@ for canyon in CANYONS:
                 canyon_data[target_date_display] = {"sold": []}
                 continue
 
-            # Extract bookings
+            # Extract sold slots
             try:
                 all_slots = driver.find_elements(By.XPATH, "//td[@check_in_date]")
                 sold_list = []
@@ -161,7 +175,7 @@ for canyon in CANYONS:
                     print(f"      🔴 {len(sold_list)} booked")
 
             except Exception as e:
-                print(f"      ⚠️ Error: {e}")
+                print(f"      ⚠️ Error reading slots: {e}")
                 canyon_data[target_date_display] = {"sold": []}
 
     except Exception as e:
