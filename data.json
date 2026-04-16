@@ -1,221 +1,282 @@
 {
-  "updated": "2026-04-15 21:02",
-  "num_days": 14,
+  "updated": "2026-04-16 07:22",
   "data": {
-    "Narrow Neck": {
-      "2026-04-15": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
-      },
+    "Empress": {
       "2026-04-16": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": [
+          {
+            "time": "2026-04-16T12:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-16T13:00:00",
+            "company": "High n Wild"
+          }
+        ]
       },
       "2026-04-17": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": [
+          {
+            "time": "2026-04-17T13:30:00",
+            "company": "Blue Mountains Adventure Company"
+          }
+        ]
       },
       "2026-04-18": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": [
+          {
+            "time": "2026-04-18T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-18T11:30:00",
+            "company": "High n Wild"
+          },
+          {
+            "time": "2026-04-18T12:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-18T13:00:00",
+            "company": "High n Wild"
+          },
+          {
+            "time": "2026-04-18T13:30:00",
+            "company": "Blue Mountains Adventure Company"
+          },
+          {
+            "time": "2026-04-18T14:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
       },
       "2026-04-19": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": [
+          {
+            "time": "2026-04-19T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-19T12:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-19T13:00:00",
+            "company": "High n Wild"
+          },
+          {
+            "time": "2026-04-19T14:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
       },
       "2026-04-20": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": [
+          {
+            "time": "2026-04-20T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-20T12:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-20T14:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
       },
       "2026-04-21": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
       },
       "2026-04-22": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
       },
       "2026-04-23": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
       },
       "2026-04-24": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": [
+          {
+            "time": "2026-04-24T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-24T13:00:00",
+            "company": "High n Wild"
+          }
+        ]
       },
       "2026-04-25": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": [
+          {
+            "time": "2026-04-25T10:00:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
       },
       "2026-04-26": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": [
+          {
+            "time": "2026-04-26T10:00:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-26T12:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-26T13:30:00",
+            "company": "Blue Mountains Adventure Company"
+          },
+          {
+            "time": "2026-04-26T14:00:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
       },
       "2026-04-27": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
       },
       "2026-04-28": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
+      },
+      "2026-04-29": {
+        "sold": []
       }
     },
     "Grand Canyon": {
-      "2026-04-15": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
-      },
       "2026-04-16": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
       },
       "2026-04-17": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
       },
       "2026-04-18": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
       },
       "2026-04-19": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
       },
       "2026-04-20": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
       },
       "2026-04-21": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
       },
       "2026-04-22": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
       },
       "2026-04-23": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
       },
       "2026-04-24": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
       },
       "2026-04-25": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
       },
       "2026-04-26": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
       },
       "2026-04-27": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
       },
       "2026-04-28": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
+      },
+      "2026-04-29": {
+        "sold": []
       }
     },
-    "Empress": {
-      "2026-04-15": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
-      },
+    "Narrow Neck": {
       "2026-04-16": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": [
+          {
+            "time": "2026-04-16T08:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-16T09:00:00",
+            "company": "High n Wild"
+          }
+        ]
       },
       "2026-04-17": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
       },
       "2026-04-18": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": [
+          {
+            "time": "2026-04-18T08:00:00",
+            "company": "High n Wild"
+          },
+          {
+            "time": "2026-04-18T08:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-18T09:00:00",
+            "company": "High n Wild"
+          }
+        ]
       },
       "2026-04-19": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": [
+          {
+            "time": "2026-04-19T08:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-19T09:00:00",
+            "company": "High n Wild"
+          }
+        ]
       },
       "2026-04-20": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": [
+          {
+            "time": "2026-04-20T08:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
       },
       "2026-04-21": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
       },
       "2026-04-22": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
       },
       "2026-04-23": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
       },
       "2026-04-24": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": [
+          {
+            "time": "2026-04-24T09:00:00",
+            "company": "High n Wild"
+          }
+        ]
       },
       "2026-04-25": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
       },
       "2026-04-26": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": [
+          {
+            "time": "2026-04-26T08:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
       },
       "2026-04-27": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
       },
       "2026-04-28": {
-        "sold": [],
-        "available": [],
-        "all_slots": []
+        "sold": []
+      },
+      "2026-04-29": {
+        "sold": []
       }
     }
   }
