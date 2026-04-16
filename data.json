@@ -1,18 +1,9 @@
 {
-  "updated": "2026-04-16 12:08",
+  "updated": "2026-04-16 15:06",
   "data": {
     "Empress": {
       "2026-04-16": {
-        "sold": [
-          {
-            "time": "2026-04-16T12:30:00",
-            "company": "Sydney Canyon Adventures Pty Ltd"
-          },
-          {
-            "time": "2026-04-16T13:00:00",
-            "company": "High n Wild"
-          }
-        ]
+        "sold": []
       },
       "2026-04-17": {
         "sold": [
@@ -191,16 +182,7 @@
     },
     "Narrow Neck": {
       "2026-04-16": {
-        "sold": [
-          {
-            "time": "2026-04-16T08:30:00",
-            "company": "Sydney Canyon Adventures Pty Ltd"
-          },
-          {
-            "time": "2026-04-16T09:00:00",
-            "company": "High n Wild"
-          }
-        ]
+        "sold": []
       },
       "2026-04-17": {
         "sold": [
