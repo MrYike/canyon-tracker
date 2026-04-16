@@ -3,6 +3,8 @@ import json
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 from datetime import datetime, timedelta
 import time
@@ -15,222 +17,252 @@ PASSWORD = os.environ.get("CANYON_PASSWORD", "")
 NUM_DAYS = 14
 
 CANYONS = [
-    {"name": "Narrow Neck",   "unit_type_id": 3151},
-    {"name": "Grand Canyon",  "unit_type_id": 3133},
-    {"name": "Empress",       "unit_type_id": 3131},
+    {"name": "Empress",      "unit_type_id": 3131},
+    {"name": "Grand Canyon", "unit_type_id": 3133},
+    {"name": "Narrow Neck",  "unit_type_id": 3151},
 ]
 
 # ================== SETUP ==================
 options = webdriver.ChromeOptions()
-options.add_argument("--headless")
+options.add_argument("--headless=new")         # new headless mode — better JS rendering
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 options.add_argument("--disable-gpu")
 options.add_argument("--window-size=1920,1080")
+options.add_argument("--disable-blink-features=AutomationControlled")
+options.add_experimental_option("excludeSwitches", ["enable-automation"])
+
+start_time = time.time()
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+wait = WebDriverWait(driver, 20)
+
 driver.get(URL)
 time.sleep(8)
 
-# Cookie banner
+# ================== COOKIE / TERMS ==================
 try:
     driver.find_element(By.LINK_TEXT, "Got it!").click()
     time.sleep(2)
-except: pass
+except:
+    pass
 
-# Accept terms
 try:
-    radio = driver.find_element(By.NAME, "radPreConditionAccept")
-    driver.execute_script("arguments[0].click();", radio)
-    time.sleep(2)
-    accept_btn = driver.find_element(By.ID, "divPreConditionsClose")
-    driver.execute_script("arguments[0].click();", accept_btn)
+    driver.find_element(By.NAME, "radPreConditionAccept").click()
+    time.sleep(1)
+    driver.find_element(By.ID, "divPreConditionsClose").click()
+    time.sleep(3)
     print("✅ Accepted terms!")
-    time.sleep(4)
-except Exception as e:
-    print(f"⚠️ Terms error: {e}")
+except:
+    pass
 
-# Login
-try:
-    driver.find_element(By.PARTIAL_LINK_TEXT, "ogin").click()
-    time.sleep(4)
-    driver.find_element(By.ID, "txtEmail").send_keys(EMAIL)
-    driver.find_element(By.ID, "txtPassword").send_keys(PASSWORD)
-    login_btn = driver.find_element(By.ID, "btnLoginNext")
-    driver.execute_script("arguments[0].click();", login_btn)
-    print("✅ Logged in!")
-    time.sleep(6)
-except Exception as e:
-    print(f"❌ Login failed: {e}")
-    driver.quit()
-    exit(1)
+# ================== LOGIN ==================
+driver.find_element(By.PARTIAL_LINK_TEXT, "ogin").click()
+time.sleep(3)
+driver.find_element(By.ID, "txtEmail").send_keys(EMAIL)
+driver.find_element(By.ID, "txtPassword").send_keys(PASSWORD)
+driver.find_element(By.ID, "btnLoginNext").click()
+time.sleep(6)
+print("✅ Logged in!")
 
-# ================== HELPER FUNCTIONS ==================
-def click_next_month():
-    xpaths = [
-        "//div[contains(@style, 'border-left: 20px solid rgb(255, 255, 255)')]",
-        "//a[contains(@class,'next')]",
-        "//span[contains(@class,'next')]",
-        "//div[contains(text(),'›')]"
-    ]
-    for xp in xpaths:
-        try:
-            btn = driver.find_element(By.XPATH, xp)
-            driver.execute_script("arguments[0].click();", btn)
-            time.sleep(3)
-            return True
-        except:
-            continue
-    return False
+print(f"\n🚀 STARTING SCAN — {len(CANYONS)} canyons × next {NUM_DAYS} days")
 
-def navigate_to_date(target_date_display):
-    print(f"   📅 {target_date_display} ", end="")
-    formats = [target_date_display, target_date_display + "T00:00:00"]
+all_data = {}
 
-    for date_str in formats:
-        for attempt in range(10):
-            try:
-                date_cell = driver.find_element(By.XPATH, f"//td[@date='{date_str}']")
-                driver.execute_script("arguments[0].click();", date_cell)
+
+def wait_for_calendar(driver, timeout=15):
+    """Wait until at least one td[@date] cell is present in the DOM."""
+    try:
+        WebDriverWait(driver, timeout).until(
+            EC.presence_of_element_located((By.XPATH, "//td[@date]"))
+        )
+        time.sleep(2)  # extra settle time for full grid render
+        return True
+    except:
+        return False
+
+
+def get_visible_dates(driver):
+    """Return the set of date strings currently shown on the calendar."""
+    tds = driver.find_elements(By.XPATH, "//td[@date]")
+    dates = set()
+    for td in tds:
+        d = td.get_attribute("date")
+        if d:
+            dates.add(d)
+    return dates
+
+
+def click_date(driver, date_str):
+    """
+    Click a calendar cell for date_str (YYYY-MM-DD).
+    Uses explicit wait + scroll into view for headless reliability.
+    Returns True if successful.
+    """
+    fmt = date_str + "T00:00:00"
+    try:
+        cell = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, f"//td[@date='{fmt}']"))
+        )
+        driver.execute_script("arguments[0].scrollIntoView(true);", cell)
+        time.sleep(0.5)
+        driver.execute_script("arguments[0].click();", cell)
+        time.sleep(5)
+        return True
+    except:
+        return False
+
+
+def try_next_month(driver):
+    """
+    Navigate to the next month on the booking calendar.
+    The site uses a small div arrow styled with border-left: 20px solid white.
+    We filter out the aMenuBar nav elements which are a false positive.
+    """
+    try:
+        # Get all border-left divs, skip nav menu items
+        candidates = driver.find_elements(
+            By.XPATH,
+            "//div[contains(@style,'border-left') and contains(@style,'solid')]"
+        )
+        for el in candidates:
+            cls = el.get_attribute("class") or ""
+            style = el.get_attribute("style") or ""
+            text = el.text.strip()
+            # Skip the top nav menu bar items (they have text like "Home", "Trip Returns")
+            if "aMenuBar" in cls or text in ("Home", "Trip Returns", "Logout", ""):
+                continue
+            # The real next-month arrow has no meaningful text and border-left ~20px
+            if "20px" in style or "15px" in style:
+                driver.execute_script("arguments[0].scrollIntoView(true);", el)
+                driver.execute_script("arguments[0].click();", el)
+                print("      ➡️  Next month")
                 time.sleep(4)
-                print("✅")
                 return True
-            except:
-                if not click_next_month():
-                    break
-                time.sleep(2)
-    print("⚠️ Could not reach")
+    except:
+        pass
     return False
 
-# ================== MAIN SCAN (Only 3 Canyons) ==================
-print(f"\n🚀 STARTING SCAN — 3 canyons × next {NUM_DAYS} days\n")
 
-all_canyons_data = {}
-
+# ================== MAIN SCRAPE LOOP ==================
 for canyon in CANYONS:
     name = canyon["name"]
     uid = canyon["unit_type_id"]
+    all_data[name] = {}
 
     print(f"\n{'='*90}")
-    print(f"🏔️ SCANNING: {name}")
+    print(f"🏔️  SCANNING: {name}")
     print(f"{'='*90}")
 
-    canyon_data = {}
-
     try:
+        # Fresh page load for each canyon
         driver.get(URL)
-        time.sleep(5)
+        time.sleep(6)
+
+        # Re-accept terms if it reappears
+        try:
+            driver.find_element(By.NAME, "radPreConditionAccept").click()
+            time.sleep(1)
+            driver.find_element(By.ID, "divPreConditionsClose").click()
+            time.sleep(3)
+        except:
+            pass
 
         # Select canyon
-        canyon_row = driver.find_element(By.XPATH, f"//div[@unit_type_id='{uid}']")
+        canyon_row = wait.until(EC.presence_of_element_located(
+            (By.XPATH, f"//div[@unit_type_id='{uid}']")
+        ))
         driver.execute_script("arguments[0].click();", canyon_row)
         print(f"✅ Selected {name}")
-        time.sleep(4)
+        time.sleep(5)
 
         # Click Book
         book_xpath = f"//div[@onclick=\"selectUnitType('nsw_cto_select_canyoning_location', {{iUnitTypeId:{uid}}});\"]"
-        book_btn = driver.find_element(By.XPATH, book_xpath)
+        book_btn = wait.until(EC.presence_of_element_located((By.XPATH, book_xpath)))
         driver.execute_script("arguments[0].click();", book_btn)
         print(f"✅ Clicked Book")
-        time.sleep(5)
+        time.sleep(6)
 
-        target_dates = [(datetime.now() + timedelta(days=i)).strftime("%Y-%m-%d") for i in range(NUM_DAYS)]
+        # Wait for calendar to render
+        if not wait_for_calendar(driver):
+            print(f"❌ Calendar never loaded for {name}")
+            continue
 
-        for target_date_display in target_dates:
-            date_clicked = navigate_to_date(target_date_display)
+        # Show what dates are currently visible
+        visible = get_visible_dates(driver)
+        print(f"   📆 Calendar loaded — {len(visible)} date cells visible")
 
-            if not date_clicked:
-                canyon_data[target_date_display] = {"sold": []}
+        navigated_to_next = False
+
+        for day_offset in range(NUM_DAYS):
+            target_dt = datetime.now() + timedelta(days=day_offset)
+            date_str = target_dt.strftime("%Y-%m-%d")
+            fmt = date_str + "T00:00:00"
+
+            print(f"   📅 {date_str} ", end="", flush=True)
+
+            # Check if date is visible before attempting click
+            if fmt not in visible:
+                # Try navigating to next month (only once per canyon)
+                if not navigated_to_next:
+                    ok = try_next_month(driver)
+                    if ok:
+                        navigated_to_next = True
+                        time.sleep(2)
+                        visible = get_visible_dates(driver)
+                        print(f"[now {len(visible)} cells] ", end="", flush=True)
+
+                if fmt not in visible:
+                    print("⚠️  Not on calendar — skipping")
+                    all_data[name][date_str] = {"sold": []}
+                    continue
+
+            # Click the date
+            if not click_date(driver, date_str):
+                print("⚠️  Could not reach")
+                all_data[name][date_str] = {"sold": []}
                 continue
 
-            # Extract detailed bookings (who booked + time)
+            print("✅")
+
+            # Read booked slots
+            sold = []
             try:
-                all_slots = driver.find_elements(By.XPATH, "//td[@check_in_date]")
-                sold_list = []
-
-                for slot in all_slots:
+                sold_slots = driver.find_elements(By.XPATH, "//td[contains(@class,'Sold')]")
+                for slot in sold_slots:
                     check_in = slot.get_attribute("check_in_date")
-                    slot_class = slot.get_attribute("class") or ""
-                    if "Sold" in slot_class and check_in:
-                        who = slot.get_attribute("parent_client_label") or "Unknown"
-                        sold_list.append({"time": check_in, "company": who})
+                    who = slot.get_attribute("parent_client_label") or "Unknown"
+                    if check_in:
+                        sold.append({"time": check_in, "company": who})
+            except:
+                pass
 
-                canyon_data[target_date_display] = {"sold": sold_list}
+            all_data[name][date_str] = {"sold": sold}
 
-                if not sold_list:
-                    print("      ✅ Fully Available!")
-                else:
-                    print(f"      🔴 {len(sold_list)} booked slot(s)")
-                    for slot in sold_list:
-                        check_in = slot["time"]
-                        who = slot["company"]
-                        try:
-                            t = datetime.strptime(check_in, "%Y-%m-%dT%H:%M:%S").strftime("%I:%M %p")
-                            print(f"         {t} — {who}")
-                        except:
-                            print(f"         {check_in} — {who}")
-
-            except Exception as e:
-                print(f"      ⚠️ Error reading slots: {e}")
-                canyon_data[target_date_display] = {"sold": []}
+            if not sold:
+                print(f"      ✅ Fully available")
+            else:
+                for b in sold:
+                    try:
+                        t = datetime.strptime(b["time"], "%Y-%m-%dT%H:%M:%S").strftime("%I:%M %p")
+                    except:
+                        t = b["time"]
+                    print(f"      🔴 {t} — {b['company']}")
 
     except Exception as e:
-        print(f"❌ Failed {name}: {e}")
+        print(f"❌ Error with {name}: {e}")
 
-    all_canyons_data[name] = canyon_data
+    print(f"   ↩️  Done {name}")
 
 driver.quit()
 
-# ================== SAVE JSON + HTML ==================
-today_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+# ================== SAVE ==================
+updated = datetime.now().strftime("%Y-%m-%d %H:%M")
+output = {"updated": updated, "data": all_data}
 
-with open("canyons_data.json", "w", encoding="utf-8") as f:
-    json.dump({"updated": today_str, "num_days": NUM_DAYS, "data": all_canyons_data}, f, indent=2)
+with open("data.json", "w") as f:
+    json.dump(output, f, indent=2)
 
-# HTML Report with detailed bookings
-html = f"""<!DOCTYPE html>
-<html>
-<head>
-    <title>NSW Canyons Booking Status</title>
-    <meta http-equiv="refresh" content="1800">
-    <style>
-        body {{ font-family: Arial, sans-serif; max-width: 1100px; margin: 40px auto; padding: 20px; line-height: 1.6; }}
-        h1 {{ color: #2c3e50; text-align: center; }}
-        h2 {{ color: #34495e; border-bottom: 3px solid #3498db; padding-bottom: 10px; }}
-        table {{ width: 100%; border-collapse: collapse; margin: 15px 0; }}
-        th {{ background: #2c3e50; color: white; padding: 12px; text-align: left; }}
-        td {{ padding: 10px 12px; border-bottom: 1px solid #ddd; }}
-        .no-book {{ color: #27ae60; font-weight: bold; }}
-    </style>
-</head>
-<body>
-    <h1>🏔️ Narrow Neck | Grand Canyon | Empress</h1>
-    <p>Last updated: {today_str}</p>
-"""
-
-for name, dates in all_canyons_data.items():
-    html += f'<div><h2>🏔️ {name}</h2>'
-    for d, info in dates.items():
-        sold = info.get("sold", [])
-        html += f'<h3>📅 {d}</h3>'
-        if not sold:
-            html += '<p class="no-book">✅ Fully Available!</p>'
-        else:
-            html += f'<p style="color:red">🔴 {len(sold)} bookings</p>'
-            html += '<table><tr><th>Time</th><th>Booked By</th></tr>'
-            for s in sold:
-                try:
-                    t = datetime.strptime(s["time"], "%Y-%m-%dT%H:%M:%S").strftime("%I:%M %p")
-                    html += f'<tr><td>{t}</td><td>{s["company"]}</td></tr>'
-                except:
-                    html += f'<tr><td>?</td><td>{s.get("company","Unknown")}</td></tr>'
-            html += '</table>'
-    html += '</div>'
-
-html += "</body></html>"
-
-with open("index.html", "w", encoding="utf-8") as f:
-    f.write(html)
-
-print("\n✅ Saved canyons_data.json and index.html")
-print(f"Finished at {datetime.now().strftime('%H:%M')}")
+elapsed = int(time.time() - start_time)
+print(f"\n✅ Saved data.json")
+print(f"⏱️  Finished at {updated} ({elapsed // 60}m {elapsed % 60}s)")
