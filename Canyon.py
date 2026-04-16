@@ -194,4 +194,31 @@ html = f"""<!DOCTYPE html>
     </style>
 </head>
 <body>
-    <h1>🏔️ Narrow
+    <h1>🏔️ Narrow Neck | Grand Canyon | Empress</h1>
+    <p>Last updated: {today_str}</p>
+"""
+
+for name, dates in all_canyons_data.items():
+    html += f"<h2>{name}</h2>"
+    for d, info in dates.items():
+        sold = info.get("sold", [])
+        html += f"<h3>📅 {d}</h3>"
+        if not sold:
+            html += '<p class="no-book">✅ Fully Available!</p>'
+        else:
+            html += f'<p style="color:red">🔴 {len(sold)} booked</p><table><tr><th>Time</th><th>Booked By</th></tr>'
+            for s in sold:
+                try:
+                    t = datetime.strptime(s["time"], "%Y-%m-%dT%H:%M:%S").strftime("%I:%M %p")
+                    html += f"<tr><td>{t}</td><td>{s['company']}</td></tr>"
+                except:
+                    html += f"<tr><td>?</td><td>{s.get('company','Unknown')}</td></tr>"
+            html += "</table>"
+
+html += "</body></html>"
+
+with open("index.html", "w", encoding="utf-8") as f:
+    f.write(html)
+
+print("\n✅ Saved canyons_data.json and index.html")
+print(f"Finished at {datetime.now().strftime('%H:%M')}")
