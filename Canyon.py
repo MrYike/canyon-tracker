@@ -32,12 +32,13 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 driver.get(URL)
 time.sleep(8)
 
-# Cookie + Terms + Login
+# Cookie banner
 try:
     driver.find_element(By.LINK_TEXT, "Got it!").click()
     time.sleep(2)
 except: pass
 
+# Accept terms
 try:
     radio = driver.find_element(By.NAME, "radPreConditionAccept")
     driver.execute_script("arguments[0].click();", radio)
@@ -49,6 +50,7 @@ try:
 except Exception as e:
     print(f"⚠️ Terms error: {e}")
 
+# Login
 try:
     driver.find_element(By.PARTIAL_LINK_TEXT, "ogin").click()
     time.sleep(4)
@@ -67,7 +69,7 @@ except Exception as e:
 def click_next_month():
     xpaths = [
         "//div[contains(@style, 'border-left: 20px solid rgb(255, 255, 255)')]",
-        "//a[contains(@class,'next')]", 
+        "//a[contains(@class,'next')]",
         "//span[contains(@class,'next')]",
         "//div[contains(text(),'›')]"
     ]
@@ -83,40 +85,25 @@ def click_next_month():
 
 def navigate_to_date(target_date_display):
     print(f"   📅 {target_date_display} ", end="")
-    
-    # Try clicking by visible day number (most reliable method)
-    day_number = target_date_display[-2:]  # e.g. "15" from "2026-04-15"
-    
-    for attempt in range(12):  # allow up to 12 month jumps
-        try:
-            # Try to click the day cell by its visible number
-            day_cell = driver.find_element(By.XPATH, f"//td[contains(@class,'day') and text()='{int(day_number)}']")
-            driver.execute_script("arguments[0].click();", day_cell)
-            time.sleep(5)
-            print("✅")
-            return True
-        except:
-            # Fallback: try @date attribute
-            for fmt in [target_date_display, target_date_display + "T00:00:00"]:
-                try:
-                    cell = driver.find_element(By.XPATH, f"//td[@date='{fmt}']")
-                    driver.execute_script("arguments[0].click();", cell)
-                    time.sleep(5)
-                    print("✅")
-                    return True
-                except:
-                    pass
-            
-            # Click next month if needed
-            if not click_next_month():
-                break
-            time.sleep(2)
-    
+    formats = [target_date_display, target_date_display + "T00:00:00"]
+
+    for date_str in formats:
+        for attempt in range(10):
+            try:
+                date_cell = driver.find_element(By.XPATH, f"//td[@date='{date_str}']")
+                driver.execute_script("arguments[0].click();", date_cell)
+                time.sleep(4)
+                print("✅")
+                return True
+            except:
+                if not click_next_month():
+                    break
+                time.sleep(2)
     print("⚠️ Could not reach")
     return False
 
-# ================== MAIN SCAN ==================
-print(f"\n🚀 STARTING SCAN — 3 canyons × {NUM_DAYS} days\n")
+# ================== MAIN SCAN (Only 3 Canyons) ==================
+print(f"\n🚀 STARTING SCAN — 3 canyons × next {NUM_DAYS} days\n")
 
 all_canyons_data = {}
 
@@ -156,10 +143,11 @@ for canyon in CANYONS:
                 canyon_data[target_date_display] = {"sold": []}
                 continue
 
-            # Extract sold slots
+            # Extract detailed bookings (who booked + time)
             try:
                 all_slots = driver.find_elements(By.XPATH, "//td[@check_in_date]")
                 sold_list = []
+
                 for slot in all_slots:
                     check_in = slot.get_attribute("check_in_date")
                     slot_class = slot.get_attribute("class") or ""
@@ -172,7 +160,15 @@ for canyon in CANYONS:
                 if not sold_list:
                     print("      ✅ Fully Available!")
                 else:
-                    print(f"      🔴 {len(sold_list)} booked")
+                    print(f"      🔴 {len(sold_list)} booked slot(s)")
+                    for slot in sold_list:
+                        check_in = slot["time"]
+                        who = slot["company"]
+                        try:
+                            t = datetime.strptime(check_in, "%Y-%m-%dT%H:%M:%S").strftime("%I:%M %p")
+                            print(f"         {t} — {who}")
+                        except:
+                            print(f"         {check_in} — {who}")
 
             except Exception as e:
                 print(f"      ⚠️ Error reading slots: {e}")
@@ -185,26 +181,26 @@ for canyon in CANYONS:
 
 driver.quit()
 
-# ================== SAVE RESULTS ==================
+# ================== SAVE JSON + HTML ==================
 today_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 with open("canyons_data.json", "w", encoding="utf-8") as f:
     json.dump({"updated": today_str, "num_days": NUM_DAYS, "data": all_canyons_data}, f, indent=2)
 
-# HTML Report
+# HTML Report with detailed bookings
 html = f"""<!DOCTYPE html>
 <html>
 <head>
-    <title>NSW Canyons Booking</title>
+    <title>NSW Canyons Booking Status</title>
     <meta http-equiv="refresh" content="1800">
     <style>
-        body {{ font-family: Arial, sans-serif; max-width: 1100px; margin: 40px auto; padding: 20px; }}
+        body {{ font-family: Arial, sans-serif; max-width: 1100px; margin: 40px auto; padding: 20px; line-height: 1.6; }}
         h1 {{ color: #2c3e50; text-align: center; }}
-        h2 {{ color: #34495e; border-bottom: 3px solid #3498db; }}
+        h2 {{ color: #34495e; border-bottom: 3px solid #3498db; padding-bottom: 10px; }}
         table {{ width: 100%; border-collapse: collapse; margin: 15px 0; }}
-        th {{ background: #2c3e50; color: white; padding: 10px; }}
-        td {{ padding: 10px; border-bottom: 1px solid #ddd; }}
-        .no-book {{ color: green; font-weight: bold; }}
+        th {{ background: #2c3e50; color: white; padding: 12px; text-align: left; }}
+        td {{ padding: 10px 12px; border-bottom: 1px solid #ddd; }}
+        .no-book {{ color: #27ae60; font-weight: bold; }}
     </style>
 </head>
 <body>
@@ -213,21 +209,23 @@ html = f"""<!DOCTYPE html>
 """
 
 for name, dates in all_canyons_data.items():
-    html += f"<h2>{name}</h2>"
+    html += f'<div><h2>🏔️ {name}</h2>'
     for d, info in dates.items():
         sold = info.get("sold", [])
-        html += f"<h3>📅 {d}</h3>"
+        html += f'<h3>📅 {d}</h3>'
         if not sold:
             html += '<p class="no-book">✅ Fully Available!</p>'
         else:
-            html += f'<p style="color:red">🔴 {len(sold)} booked</p><table><tr><th>Time</th><th>Booked By</th></tr>'
+            html += f'<p style="color:red">🔴 {len(sold)} bookings</p>'
+            html += '<table><tr><th>Time</th><th>Booked By</th></tr>'
             for s in sold:
                 try:
                     t = datetime.strptime(s["time"], "%Y-%m-%dT%H:%M:%S").strftime("%I:%M %p")
-                    html += f"<tr><td>{t}</td><td>{s['company']}</td></tr>"
+                    html += f'<tr><td>{t}</td><td>{s["company"]}</td></tr>'
                 except:
-                    html += f"<tr><td>?</td><td>{s.get('company','Unknown')}</td></tr>"
-            html += "</table>"
+                    html += f'<tr><td>?</td><td>{s.get("company","Unknown")}</td></tr>'
+            html += '</table>'
+    html += '</div>'
 
 html += "</body></html>"
 
