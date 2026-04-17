@@ -1,14 +1,9 @@
 {
-  "updated": "2026-04-17 13:53",
+  "updated": "2026-04-17 15:09",
   "data": {
     "Empress": {
       "2026-04-17": {
-        "sold": [
-          {
-            "time": "2026-04-17T13:30:00",
-            "company": "Blue Mountains Adventure Company"
-          }
-        ]
+        "sold": []
       },
       "2026-04-18": {
         "sold": [
@@ -199,12 +194,7 @@
     },
     "Narrow Neck": {
       "2026-04-17": {
-        "sold": [
-          {
-            "time": "2026-04-17T09:30:00",
-            "company": "Blue Mountains Adventure Company"
-          }
-        ]
+        "sold": []
       },
       "2026-04-18": {
         "sold": [
