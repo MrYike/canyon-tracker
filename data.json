@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-17 06:12",
+  "updated": "2026-04-17 08:53",
   "data": {
     "Empress": {
       "2026-04-17": {
@@ -53,6 +53,10 @@
             "company": "High n Wild"
           },
           {
+            "time": "2026-04-19T13:30:00",
+            "company": "Blue Mountains Adventure Company"
+          },
+          {
             "time": "2026-04-19T14:30:00",
             "company": "Sydney Canyon Adventures Pty Ltd"
           }
@@ -75,7 +79,12 @@
         ]
       },
       "2026-04-21": {
-        "sold": []
+        "sold": [
+          {
+            "time": "2026-04-21T13:30:00",
+            "company": "Blue Mountains Adventure Company"
+          }
+        ]
       },
       "2026-04-22": {
         "sold": []
@@ -92,6 +101,10 @@
           {
             "time": "2026-04-24T13:00:00",
             "company": "High n Wild"
+          },
+          {
+            "time": "2026-04-24T13:30:00",
+            "company": "Blue Mountains Adventure Company"
           }
         ]
       },
@@ -108,6 +121,10 @@
           {
             "time": "2026-04-26T10:00:00",
             "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-26T10:30:00",
+            "company": "Blue Mountains Adventure Company"
           },
           {
             "time": "2026-04-26T12:30:00",
