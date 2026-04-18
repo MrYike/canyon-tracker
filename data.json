@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-18 07:24",
+  "updated": "2026-04-18 09:04",
   "data": {
     "Empress": {
       "2026-04-18": {
@@ -56,6 +56,14 @@
       },
       "2026-04-20": {
         "sold": [
+          {
+            "time": "2026-04-20T08:30:00",
+            "company": "5 Star Training and Consulting Pty Ltd"
+          },
+          {
+            "time": "2026-04-20T10:00:00",
+            "company": "5 Star Training and Consulting Pty Ltd"
+          },
           {
             "time": "2026-04-20T10:30:00",
             "company": "Sydney Canyon Adventures Pty Ltd"
