@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-20 03:38",
+  "updated": "2026-04-20 06:26",
   "data": {
     "Empress": {
       "2026-04-20": {
@@ -168,7 +168,16 @@
         "sold": []
       },
       "2026-04-28": {
-        "sold": []
+        "sold": [
+          {
+            "time": "2026-04-28T10:30:00",
+            "company": "Blue Mountains Adventure Company"
+          },
+          {
+            "time": "2026-04-28T11:00:00",
+            "company": "Blue Mountains Adventure Company"
+          }
+        ]
       },
       "2026-04-29": {
         "sold": []
