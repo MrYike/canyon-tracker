@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-23 06:15",
+  "updated": "2026-04-23 09:02",
   "data": {
     "Empress": {
       "2026-04-23": {
@@ -61,7 +61,12 @@
         "sold": []
       },
       "2026-04-28": {
-        "sold": []
+        "sold": [
+          {
+            "time": "2026-04-28T13:00:00",
+            "company": "High n Wild"
+          }
+        ]
       },
       "2026-04-29": {
         "sold": [
@@ -72,6 +77,10 @@
           {
             "time": "2026-04-29T13:30:00",
             "company": "World Expeditions Travel T/A Blue Mountains Adventure Company"
+          },
+          {
+            "time": "2026-04-29T14:00:00",
+            "company": "High n Wild"
           }
         ]
       },
