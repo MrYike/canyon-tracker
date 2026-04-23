@@ -1,8 +1,267 @@
 {
-  "updated": "2026-04-23 10:29",
+  "updated": "2026-04-23 12:07",
   "data": {
-    "Empress": {},
-    "Grand Canyon": {},
-    "Narrow Neck": {}
+    "Empress": {
+      "2026-04-23": {
+        "sold": []
+      },
+      "2026-04-24": {
+        "sold": [
+          {
+            "time": "2026-04-24T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-24T13:00:00",
+            "company": "High n Wild"
+          },
+          {
+            "time": "2026-04-24T13:30:00",
+            "company": "World Expeditions Travel T/A Blue Mountains Adventure Company"
+          }
+        ]
+      },
+      "2026-04-25": {
+        "sold": [
+          {
+            "time": "2026-04-25T10:00:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
+      },
+      "2026-04-26": {
+        "sold": [
+          {
+            "time": "2026-04-26T10:00:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-26T10:30:00",
+            "company": "World Expeditions Travel T/A Blue Mountains Adventure Company"
+          },
+          {
+            "time": "2026-04-26T12:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-26T13:00:00",
+            "company": "High n Wild"
+          },
+          {
+            "time": "2026-04-26T13:30:00",
+            "company": "World Expeditions Travel T/A Blue Mountains Adventure Company"
+          },
+          {
+            "time": "2026-04-26T14:00:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
+      },
+      "2026-04-27": {
+        "sold": []
+      },
+      "2026-04-28": {
+        "sold": [
+          {
+            "time": "2026-04-28T13:00:00",
+            "company": "High n Wild"
+          }
+        ]
+      },
+      "2026-04-29": {
+        "sold": [
+          {
+            "time": "2026-04-29T13:00:00",
+            "company": "High n Wild"
+          },
+          {
+            "time": "2026-04-29T13:30:00",
+            "company": "World Expeditions Travel T/A Blue Mountains Adventure Company"
+          },
+          {
+            "time": "2026-04-29T14:00:00",
+            "company": "High n Wild"
+          }
+        ]
+      },
+      "2026-04-30": {
+        "sold": []
+      },
+      "2026-05-01": {
+        "sold": [
+          {
+            "time": "2026-05-01T12:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
+      },
+      "2026-05-02": {
+        "sold": [
+          {
+            "time": "2026-05-02T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-05-02T12:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-05-02T13:30:00",
+            "company": "World Expeditions Travel T/A Blue Mountains Adventure Company"
+          },
+          {
+            "time": "2026-05-02T14:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
+      },
+      "2026-05-03": {
+        "sold": [
+          {
+            "time": "2026-05-03T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
+      },
+      "2026-05-04": {
+        "sold": []
+      },
+      "2026-05-05": {
+        "sold": []
+      },
+      "2026-05-06": {
+        "sold": []
+      }
+    },
+    "Grand Canyon": {
+      "2026-04-23": {
+        "sold": []
+      },
+      "2026-04-24": {
+        "sold": []
+      },
+      "2026-04-25": {
+        "sold": []
+      },
+      "2026-04-26": {
+        "sold": []
+      },
+      "2026-04-27": {
+        "sold": []
+      },
+      "2026-04-28": {
+        "sold": [
+          {
+            "time": "2026-04-28T10:30:00",
+            "company": "World Expeditions Travel T/A Blue Mountains Adventure Company"
+          },
+          {
+            "time": "2026-04-28T11:00:00",
+            "company": "World Expeditions Travel T/A Blue Mountains Adventure Company"
+          }
+        ]
+      },
+      "2026-04-29": {
+        "sold": []
+      },
+      "2026-04-30": {
+        "sold": []
+      },
+      "2026-05-01": {
+        "sold": []
+      },
+      "2026-05-02": {
+        "sold": []
+      },
+      "2026-05-03": {
+        "sold": []
+      },
+      "2026-05-04": {
+        "sold": []
+      },
+      "2026-05-05": {
+        "sold": []
+      },
+      "2026-05-06": {
+        "sold": []
+      }
+    },
+    "Narrow Neck": {
+      "2026-04-23": {
+        "sold": []
+      },
+      "2026-04-24": {
+        "sold": [
+          {
+            "time": "2026-04-24T09:00:00",
+            "company": "High n Wild"
+          }
+        ]
+      },
+      "2026-04-25": {
+        "sold": []
+      },
+      "2026-04-26": {
+        "sold": [
+          {
+            "time": "2026-04-26T08:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-04-26T09:00:00",
+            "company": "High n Wild"
+          }
+        ]
+      },
+      "2026-04-27": {
+        "sold": []
+      },
+      "2026-04-28": {
+        "sold": []
+      },
+      "2026-04-29": {
+        "sold": [
+          {
+            "time": "2026-04-29T09:00:00",
+            "company": "High n Wild"
+          }
+        ]
+      },
+      "2026-04-30": {
+        "sold": []
+      },
+      "2026-05-01": {
+        "sold": [
+          {
+            "time": "2026-05-01T08:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
+      },
+      "2026-05-02": {
+        "sold": [
+          {
+            "time": "2026-05-02T08:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-05-02T09:00:00",
+            "company": "High n Wild"
+          }
+        ]
+      },
+      "2026-05-03": {
+        "sold": []
+      },
+      "2026-05-04": {
+        "sold": []
+      },
+      "2026-05-05": {
+        "sold": []
+      },
+      "2026-05-06": {
+        "sold": []
+      }
+    }
   }
 }
