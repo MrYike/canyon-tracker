@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-23 03:32",
+  "updated": "2026-04-23 06:15",
   "data": {
     "Empress": {
       "2026-04-23": {
@@ -17,7 +17,7 @@
           },
           {
             "time": "2026-04-24T13:30:00",
-            "company": "Blue Mountains Adventure Company"
+            "company": "World Expeditions Travel T/A Blue Mountains Adventure Company"
           }
         ]
       },
@@ -37,7 +37,7 @@
           },
           {
             "time": "2026-04-26T10:30:00",
-            "company": "Blue Mountains Adventure Company"
+            "company": "World Expeditions Travel T/A Blue Mountains Adventure Company"
           },
           {
             "time": "2026-04-26T12:30:00",
@@ -49,7 +49,7 @@
           },
           {
             "time": "2026-04-26T13:30:00",
-            "company": "Blue Mountains Adventure Company"
+            "company": "World Expeditions Travel T/A Blue Mountains Adventure Company"
           },
           {
             "time": "2026-04-26T14:00:00",
@@ -71,7 +71,7 @@
           },
           {
             "time": "2026-04-29T13:30:00",
-            "company": "Blue Mountains Adventure Company"
+            "company": "World Expeditions Travel T/A Blue Mountains Adventure Company"
           }
         ]
       },
@@ -95,6 +95,10 @@
           {
             "time": "2026-05-02T12:30:00",
             "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-05-02T13:30:00",
+            "company": "World Expeditions Travel T/A Blue Mountains Adventure Company"
           },
           {
             "time": "2026-05-02T14:30:00",
@@ -140,11 +144,11 @@
         "sold": [
           {
             "time": "2026-04-28T10:30:00",
-            "company": "Blue Mountains Adventure Company"
+            "company": "World Expeditions Travel T/A Blue Mountains Adventure Company"
           },
           {
             "time": "2026-04-28T11:00:00",
-            "company": "Blue Mountains Adventure Company"
+            "company": "World Expeditions Travel T/A Blue Mountains Adventure Company"
           }
         ]
       },
