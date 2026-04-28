@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-28 09:33",
+  "updated": "2026-04-28 14:33",
   "data": {
     "Empress": {
       "2026-04-28": {
@@ -96,16 +96,7 @@
     },
     "Grand Canyon": {
       "2026-04-28": {
-        "sold": [
-          {
-            "time": "2026-04-28T10:30:00",
-            "company": "World Expeditions Travel T/A Blue Mountains Adventure Company"
-          },
-          {
-            "time": "2026-04-28T11:00:00",
-            "company": "World Expeditions Travel T/A Blue Mountains Adventure Company"
-          }
-        ]
+        "sold": []
       },
       "2026-04-29": {
         "sold": []
