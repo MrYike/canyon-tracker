@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-29 04:01",
+  "updated": "2026-04-29 06:36",
   "data": {
     "Empress": {
       "2026-04-29": {
@@ -14,7 +14,7 @@
           },
           {
             "time": "2026-04-29T13:30:00",
-            "company": "World Expeditions Travel T/A Blue Mountains Adventure Company"
+            "company": "World Expeditions Travel"
           },
           {
             "time": "2026-04-29T14:00:00",
@@ -50,7 +50,7 @@
           },
           {
             "time": "2026-05-02T13:30:00",
-            "company": "World Expeditions Travel T/A Blue Mountains Adventure Company"
+            "company": "World Expeditions Travel"
           },
           {
             "time": "2026-05-02T14:30:00",
@@ -94,7 +94,50 @@
         "sold": []
       }
     },
-    "Grand Canyon": {},
+    "Grand Canyon": {
+      "2026-04-29": {
+        "sold": []
+      },
+      "2026-04-30": {
+        "sold": []
+      },
+      "2026-05-01": {
+        "sold": []
+      },
+      "2026-05-02": {
+        "sold": []
+      },
+      "2026-05-03": {
+        "sold": []
+      },
+      "2026-05-04": {
+        "sold": []
+      },
+      "2026-05-05": {
+        "sold": []
+      },
+      "2026-05-06": {
+        "sold": []
+      },
+      "2026-05-07": {
+        "sold": []
+      },
+      "2026-05-08": {
+        "sold": []
+      },
+      "2026-05-09": {
+        "sold": []
+      },
+      "2026-05-10": {
+        "sold": []
+      },
+      "2026-05-11": {
+        "sold": []
+      },
+      "2026-05-12": {
+        "sold": []
+      }
+    },
     "Narrow Neck": {
       "2026-04-29": {
         "sold": [
