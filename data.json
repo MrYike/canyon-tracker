@@ -1,14 +1,9 @@
 {
-  "updated": "2026-04-30 11:48",
+  "updated": "2026-04-30 14:16",
   "data": {
     "Empress": {
       "2026-04-30": {
-        "sold": [
-          {
-            "time": "2026-04-30T12:30:00",
-            "company": "Sydney Canyon Adventures Pty Ltd"
-          }
-        ]
+        "sold": []
       },
       "2026-05-01": {
         "sold": [
@@ -79,12 +74,7 @@
     },
     "Grand Canyon": {
       "2026-04-30": {
-        "sold": [
-          {
-            "time": "2026-04-30T10:00:00",
-            "company": "Cliff Line Adventures Pty Ltd"
-          }
-        ]
+        "sold": []
       },
       "2026-05-01": {
         "sold": []
@@ -128,20 +118,7 @@
     },
     "Narrow Neck": {
       "2026-04-30": {
-        "sold": [
-          {
-            "time": "2026-04-30T08:30:00",
-            "company": "Sydney Canyon Adventures Pty Ltd"
-          },
-          {
-            "time": "2026-04-30T09:00:00",
-            "company": "World Expeditions Travel"
-          },
-          {
-            "time": "2026-04-30T12:30:00",
-            "company": "World Expeditions Travel"
-          }
-        ]
+        "sold": []
       },
       "2026-05-01": {
         "sold": [
