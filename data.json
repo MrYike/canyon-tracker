@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-15 12:34",
+  "updated": "2026-06-15 18:03",
   "data": {
     "Empress": {
       "2026-06-15": {
@@ -91,12 +91,7 @@
     },
     "Narrow Neck": {
       "2026-06-15": {
-        "sold": [
-          {
-            "time": "2026-06-15T12:30:00",
-            "company": "Roam Adventures and Training"
-          }
-        ]
+        "sold": []
       },
       "2026-06-16": {
         "sold": []
