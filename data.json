@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-16 05:10",
+  "updated": "2026-06-16 17:11",
   "data": {
     "Empress": {
       "2026-06-16": {
@@ -105,7 +105,20 @@
         ]
       },
       "2026-06-19": {
-        "sold": []
+        "sold": [
+          {
+            "time": "2026-06-19T10:30:00",
+            "company": "Cliff Line Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-06-19T11:00:00",
+            "company": "Cliff Line Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-06-19T13:00:00",
+            "company": "Cliff Line Adventures Pty Ltd"
+          }
+        ]
       },
       "2026-06-20": {
         "sold": []
