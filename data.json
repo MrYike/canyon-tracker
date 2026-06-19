@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-19 13:43",
+  "updated": "2026-06-19 16:39",
   "data": {
     "Empress": {
       "2026-06-19": {
@@ -91,20 +91,7 @@
     },
     "Narrow Neck": {
       "2026-06-19": {
-        "sold": [
-          {
-            "time": "2026-06-19T10:30:00",
-            "company": "Cliff Line Adventures Pty Ltd"
-          },
-          {
-            "time": "2026-06-19T11:00:00",
-            "company": "Cliff Line Adventures Pty Ltd"
-          },
-          {
-            "time": "2026-06-19T13:00:00",
-            "company": "Cliff Line Adventures Pty Ltd"
-          }
-        ]
+        "sold": []
       },
       "2026-06-20": {
         "sold": []
