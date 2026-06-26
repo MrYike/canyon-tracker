@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-26 12:21",
+  "updated": "2026-06-26 15:31",
   "data": {
     "Empress": {
       "2026-06-26": {
@@ -91,12 +91,7 @@
     },
     "Narrow Neck": {
       "2026-06-26": {
-        "sold": [
-          {
-            "time": "2026-06-26T09:00:00",
-            "company": "Sydney Canyon Adventures Pty Ltd"
-          }
-        ]
+        "sold": []
       },
       "2026-06-27": {
         "sold": []
