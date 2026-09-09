@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-09 09:35",
+  "updated": "2026-09-09 14:23",
   "data": {
     "Empress": {
       "2026-09-09": {
@@ -110,7 +110,12 @@
         ]
       },
       "2026-09-22": {
-        "sold": []
+        "sold": [
+          {
+            "time": "2026-09-22T14:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
       }
     },
     "Grand Canyon": {
