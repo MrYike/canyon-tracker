@@ -1,14 +1,9 @@
 {
-  "updated": "2026-09-10 09:34",
+  "updated": "2026-09-10 14:16",
   "data": {
     "Empress": {
       "2026-09-10": {
-        "sold": [
-          {
-            "time": "2026-09-10T12:30:00",
-            "company": "Sydney Canyon Adventures Pty Ltd"
-          }
-        ]
+        "sold": []
       },
       "2026-09-11": {
         "sold": []
@@ -169,12 +164,7 @@
     },
     "Narrow Neck": {
       "2026-09-10": {
-        "sold": [
-          {
-            "time": "2026-09-10T08:30:00",
-            "company": "Sydney Canyon Adventures Pty Ltd"
-          }
-        ]
+        "sold": []
       },
       "2026-09-11": {
         "sold": []
