@@ -1,10 +1,7 @@
 {
-  "updated": "2026-09-10 00:03",
+  "updated": "2026-09-10 04:31",
   "data": {
     "Empress": {
-      "2026-09-09": {
-        "sold": []
-      },
       "2026-09-10": {
         "sold": [
           {
@@ -113,6 +110,14 @@
         "sold": [
           {
             "time": "2026-09-22T14:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
+      },
+      "2026-09-23": {
+        "sold": [
+          {
+            "time": "2026-09-23T10:30:00",
             "company": "Sydney Canyon Adventures Pty Ltd"
           }
         ]
