@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-11 04:07",
+  "updated": "2026-09-11 09:32",
   "data": {
     "Empress": {
       "2026-09-11": {
@@ -22,10 +22,20 @@
         ]
       },
       "2026-09-13": {
-        "sold": []
+        "sold": [
+          {
+            "time": "2026-09-13T13:00:00",
+            "company": "High n Wild Pty Ltd"
+          }
+        ]
       },
       "2026-09-14": {
-        "sold": []
+        "sold": [
+          {
+            "time": "2026-09-14T13:00:00",
+            "company": "Australian School of Mountaineering"
+          }
+        ]
       },
       "2026-09-15": {
         "sold": []
@@ -83,6 +93,10 @@
           {
             "time": "2026-09-20T10:30:00",
             "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-09-20T13:00:00",
+            "company": "High n Wild Pty Ltd"
           },
           {
             "time": "2026-09-20T14:30:00",
@@ -180,7 +194,12 @@
         ]
       },
       "2026-09-13": {
-        "sold": []
+        "sold": [
+          {
+            "time": "2026-09-13T09:00:00",
+            "company": "High n Wild Pty Ltd"
+          }
+        ]
       },
       "2026-09-14": {
         "sold": []
