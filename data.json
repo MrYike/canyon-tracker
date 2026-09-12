@@ -1,10 +1,7 @@
 {
-  "updated": "2026-09-11 21:42",
+  "updated": "2026-09-12 00:05",
   "data": {
     "Empress": {
-      "2026-09-11": {
-        "sold": []
-      },
       "2026-09-12": {
         "sold": [
           {
@@ -135,12 +132,21 @@
             "company": "High n Wild Pty Ltd"
           }
         ]
+      },
+      "2026-09-25": {
+        "sold": [
+          {
+            "time": "2026-09-25T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-09-25T14:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
       }
     },
     "Grand Canyon": {
-      "2026-09-11": {
-        "sold": []
-      },
       "2026-09-12": {
         "sold": []
       },
@@ -179,12 +185,12 @@
       },
       "2026-09-24": {
         "sold": []
+      },
+      "2026-09-25": {
+        "sold": []
       }
     },
     "Narrow Neck": {
-      "2026-09-11": {
-        "sold": []
-      },
       "2026-09-12": {
         "sold": [
           {
@@ -253,6 +259,9 @@
             "company": "High n Wild Pty Ltd"
           }
         ]
+      },
+      "2026-09-25": {
+        "sold": []
       }
     }
   }
