@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-15 04:28",
+  "updated": "2026-09-15 09:59",
   "data": {
     "Empress": {
       "2026-09-15": {
@@ -20,6 +20,10 @@
       },
       "2026-09-17": {
         "sold": [
+          {
+            "time": "2026-09-17T12:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
           {
             "time": "2026-09-17T13:00:00",
             "company": "High n Wild Pty Ltd"
