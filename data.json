@@ -1,10 +1,7 @@
 {
-  "updated": "2026-09-20 21:26",
+  "updated": "2026-09-21 00:06",
   "data": {
     "Empress": {
-      "2026-09-20": {
-        "sold": []
-      },
       "2026-09-21": {
         "sold": [
           {
@@ -192,12 +189,41 @@
             "company": "Sydney Canyon Adventures Pty Ltd"
           }
         ]
+      },
+      "2026-10-04": {
+        "sold": [
+          {
+            "time": "2026-10-04T08:30:00",
+            "company": "Keltus Pty Ltd"
+          },
+          {
+            "time": "2026-10-04T09:00:00",
+            "company": "Keltus Pty Ltd"
+          },
+          {
+            "time": "2026-10-04T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-10-04T12:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-10-04T13:00:00",
+            "company": "High n Wild Pty Ltd"
+          },
+          {
+            "time": "2026-10-04T13:30:00",
+            "company": "World Expeditions Travel Group"
+          },
+          {
+            "time": "2026-10-04T14:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
       }
     },
     "Grand Canyon": {
-      "2026-09-20": {
-        "sold": []
-      },
       "2026-09-21": {
         "sold": [
           {
@@ -241,12 +267,12 @@
       },
       "2026-10-03": {
         "sold": []
+      },
+      "2026-10-04": {
+        "sold": []
       }
     },
     "Narrow Neck": {
-      "2026-09-20": {
-        "sold": []
-      },
       "2026-09-21": {
         "sold": []
       },
@@ -331,6 +357,18 @@
           },
           {
             "time": "2026-10-03T09:00:00",
+            "company": "High n Wild Pty Ltd"
+          }
+        ]
+      },
+      "2026-10-04": {
+        "sold": [
+          {
+            "time": "2026-10-04T08:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-10-04T09:00:00",
             "company": "High n Wild Pty Ltd"
           }
         ]
