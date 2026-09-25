@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-25 01:23",
+  "updated": "2026-09-25 07:33",
   "data": {
     "Empress": {
       "2026-09-25": {
@@ -96,6 +96,14 @@
       },
       "2026-09-30": {
         "sold": [
+          {
+            "time": "2026-09-30T09:00:00",
+            "company": "World Expeditions Travel Group"
+          },
+          {
+            "time": "2026-09-30T12:30:00",
+            "company": "World Expeditions Travel Group"
+          },
           {
             "time": "2026-09-30T13:00:00",
             "company": "High n Wild Pty Ltd"
@@ -243,7 +251,12 @@
         "sold": []
       },
       "2026-09-30": {
-        "sold": []
+        "sold": [
+          {
+            "time": "2026-09-30T09:00:00",
+            "company": "World Expeditions Travel Group"
+          }
+        ]
       },
       "2026-10-01": {
         "sold": []
