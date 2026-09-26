@@ -1,30 +1,9 @@
 {
-  "updated": "2026-09-26 12:57",
+  "updated": "2026-09-26 17:04",
   "data": {
     "Empress": {
       "2026-09-26": {
-        "sold": [
-          {
-            "time": "2026-09-26T10:30:00",
-            "company": "Sydney Canyon Adventures Pty Ltd"
-          },
-          {
-            "time": "2026-09-26T13:00:00",
-            "company": "High n Wild Pty Ltd"
-          },
-          {
-            "time": "2026-09-26T13:30:00",
-            "company": "World Expeditions Travel Group"
-          },
-          {
-            "time": "2026-09-26T14:00:00",
-            "company": "World Expeditions Travel Group"
-          },
-          {
-            "time": "2026-09-26T14:30:00",
-            "company": "Sydney Canyon Adventures Pty Ltd"
-          }
-        ]
+        "sold": []
       },
       "2026-09-27": {
         "sold": [
@@ -269,12 +248,7 @@
     },
     "Narrow Neck": {
       "2026-09-26": {
-        "sold": [
-          {
-            "time": "2026-09-26T09:00:00",
-            "company": "High n Wild Pty Ltd"
-          }
-        ]
+        "sold": []
       },
       "2026-09-27": {
         "sold": [
