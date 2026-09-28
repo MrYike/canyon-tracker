@@ -1,26 +1,9 @@
 {
-  "updated": "2026-09-28 06:38",
+  "updated": "2026-09-28 15:17",
   "data": {
     "Empress": {
       "2026-09-28": {
-        "sold": [
-          {
-            "time": "2026-09-28T11:30:00",
-            "company": "Sydney Canyon Adventures Pty Ltd"
-          },
-          {
-            "time": "2026-09-28T12:30:00",
-            "company": "Sydney Canyon Adventures Pty Ltd"
-          },
-          {
-            "time": "2026-09-28T13:00:00",
-            "company": "Sydney Canyon Adventures Pty Ltd"
-          },
-          {
-            "time": "2026-09-28T13:30:00",
-            "company": "World Expeditions Travel Group"
-          }
-        ]
+        "sold": []
       },
       "2026-09-29": {
         "sold": [
@@ -31,10 +14,6 @@
           {
             "time": "2026-09-29T13:00:00",
             "company": "High n Wild Pty Ltd"
-          },
-          {
-            "time": "2026-09-29T14:30:00",
-            "company": "Sydney Canyon Adventures Pty Ltd"
           }
         ]
       },
@@ -75,6 +54,10 @@
           {
             "time": "2026-10-01T12:30:00",
             "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-10-01T14:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
           }
         ]
       },
@@ -82,6 +65,10 @@
         "sold": [
           {
             "time": "2026-10-02T12:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-10-02T14:30:00",
             "company": "Sydney Canyon Adventures Pty Ltd"
           }
         ]
