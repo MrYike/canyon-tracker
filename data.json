@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-02 01:34",
+  "updated": "2026-10-02 08:20",
   "data": {
     "Empress": {
       "2026-10-02": {
@@ -101,6 +101,10 @@
       "2026-10-07": {
         "sold": [
           {
+            "time": "2026-10-07T12:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
             "time": "2026-10-07T13:00:00",
             "company": "High n Wild Pty Ltd"
           },
@@ -198,7 +202,12 @@
         "sold": []
       },
       "2026-10-03": {
-        "sold": []
+        "sold": [
+          {
+            "time": "2026-10-03T11:30:00",
+            "company": "World Expeditions Travel Group"
+          }
+        ]
       },
       "2026-10-04": {
         "sold": []
@@ -288,6 +297,10 @@
       },
       "2026-10-07": {
         "sold": [
+          {
+            "time": "2026-10-07T08:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
           {
             "time": "2026-10-07T09:00:00",
             "company": "High n Wild Pty Ltd"
