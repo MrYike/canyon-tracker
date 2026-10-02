@@ -1,10 +1,7 @@
 {
-  "updated": "2026-10-01 21:51",
+  "updated": "2026-10-02 01:34",
   "data": {
     "Empress": {
-      "2026-10-01": {
-        "sold": []
-      },
       "2026-10-02": {
         "sold": [
           {
@@ -106,6 +103,10 @@
           {
             "time": "2026-10-07T13:00:00",
             "company": "High n Wild Pty Ltd"
+          },
+          {
+            "time": "2026-10-07T13:30:00",
+            "company": "World Expeditions Travel Group"
           }
         ]
       },
@@ -182,12 +183,17 @@
             "company": "High n Wild Pty Ltd"
           }
         ]
+      },
+      "2026-10-15": {
+        "sold": [
+          {
+            "time": "2026-10-15T13:00:00",
+            "company": "High n Wild Pty Ltd"
+          }
+        ]
       }
     },
     "Grand Canyon": {
-      "2026-10-01": {
-        "sold": []
-      },
       "2026-10-02": {
         "sold": []
       },
@@ -231,12 +237,12 @@
       },
       "2026-10-14": {
         "sold": []
+      },
+      "2026-10-15": {
+        "sold": []
       }
     },
     "Narrow Neck": {
-      "2026-10-01": {
-        "sold": []
-      },
       "2026-10-02": {
         "sold": [
           {
@@ -329,6 +335,14 @@
         "sold": [
           {
             "time": "2026-10-14T09:00:00",
+            "company": "High n Wild Pty Ltd"
+          }
+        ]
+      },
+      "2026-10-15": {
+        "sold": [
+          {
+            "time": "2026-10-15T09:00:00",
             "company": "High n Wild Pty Ltd"
           }
         ]
