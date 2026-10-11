@@ -1,10 +1,7 @@
 {
-  "updated": "2026-10-10 22:27",
+  "updated": "2026-10-11 01:50",
   "data": {
     "Empress": {
-      "2026-10-10": {
-        "sold": []
-      },
       "2026-10-11": {
         "sold": [
           {
@@ -150,12 +147,33 @@
             "company": "High n Wild Pty Ltd"
           }
         ]
+      },
+      "2026-10-24": {
+        "sold": [
+          {
+            "time": "2026-10-24T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-10-24T13:00:00",
+            "company": "High n Wild Pty Ltd"
+          },
+          {
+            "time": "2026-10-24T13:30:00",
+            "company": "World Expeditions Travel Group"
+          },
+          {
+            "time": "2026-10-24T14:00:00",
+            "company": "Australian School of Mountaineering"
+          },
+          {
+            "time": "2026-10-24T14:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
       }
     },
     "Grand Canyon": {
-      "2026-10-10": {
-        "sold": []
-      },
       "2026-10-11": {
         "sold": []
       },
@@ -199,12 +217,12 @@
       },
       "2026-10-23": {
         "sold": []
+      },
+      "2026-10-24": {
+        "sold": []
       }
     },
     "Narrow Neck": {
-      "2026-10-10": {
-        "sold": []
-      },
       "2026-10-11": {
         "sold": [
           {
@@ -286,6 +304,18 @@
           {
             "time": "2026-10-23T09:00:00",
             "company": "High n Wild Pty Ltd"
+          }
+        ]
+      },
+      "2026-10-24": {
+        "sold": [
+          {
+            "time": "2026-10-24T09:00:00",
+            "company": "High n Wild Pty Ltd"
+          },
+          {
+            "time": "2026-10-24T09:30:00",
+            "company": "Australian School of Mountaineering"
           }
         ]
       }
