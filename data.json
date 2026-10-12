@@ -1,14 +1,9 @@
 {
-  "updated": "2026-10-12 07:14",
+  "updated": "2026-10-12 17:43",
   "data": {
     "Empress": {
       "2026-10-12": {
-        "sold": [
-          {
-            "time": "2026-10-12T10:30:00",
-            "company": "Sydney Canyon Adventures Pty Ltd"
-          }
-        ]
+        "sold": []
       },
       "2026-10-13": {
         "sold": [
@@ -180,12 +175,7 @@
     },
     "Grand Canyon": {
       "2026-10-12": {
-        "sold": [
-          {
-            "time": "2026-10-12T11:30:00",
-            "company": "World Expeditions Travel Group"
-          }
-        ]
+        "sold": []
       },
       "2026-10-13": {
         "sold": []
