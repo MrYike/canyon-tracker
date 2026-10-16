@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-16 01:10",
+  "updated": "2026-10-16 07:00",
   "data": {
     "Empress": {
       "2026-10-16": {
@@ -187,7 +187,20 @@
         "sold": []
       },
       "2026-10-17": {
-        "sold": []
+        "sold": [
+          {
+            "time": "2026-10-17T11:30:00",
+            "company": "World Expeditions Travel Group"
+          },
+          {
+            "time": "2026-10-17T12:30:00",
+            "company": "World Expeditions Travel Group"
+          },
+          {
+            "time": "2026-10-17T13:00:00",
+            "company": "World Expeditions Travel Group"
+          }
+        ]
       },
       "2026-10-18": {
         "sold": []
