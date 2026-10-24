@@ -1,10 +1,7 @@
 {
-  "updated": "2026-10-23 22:06",
+  "updated": "2026-10-24 01:31",
   "data": {
     "Empress": {
-      "2026-10-23": {
-        "sold": []
-      },
       "2026-10-24": {
         "sold": [
           {
@@ -173,12 +170,45 @@
             "company": "World Expeditions Travel Group"
           }
         ]
+      },
+      "2026-11-06": {
+        "sold": [
+          {
+            "time": "2026-11-06T07:00:00",
+            "company": "Unknown"
+          },
+          {
+            "time": "2026-11-06T07:30:00",
+            "company": "Unknown"
+          },
+          {
+            "time": "2026-11-06T08:00:00",
+            "company": "Gaskin, Sam"
+          },
+          {
+            "time": "2026-11-06T08:30:00",
+            "company": "Unknown"
+          },
+          {
+            "time": "2026-11-06T09:00:00",
+            "company": "Unknown"
+          },
+          {
+            "time": "2026-11-06T09:30:00",
+            "company": "Unknown"
+          },
+          {
+            "time": "2026-11-06T10:00:00",
+            "company": "Unknown"
+          },
+          {
+            "time": "2026-11-06T13:00:00",
+            "company": "High n Wild Pty Ltd"
+          }
+        ]
       }
     },
     "Grand Canyon": {
-      "2026-10-23": {
-        "sold": []
-      },
       "2026-10-24": {
         "sold": [
           {
@@ -239,12 +269,12 @@
       },
       "2026-11-05": {
         "sold": []
+      },
+      "2026-11-06": {
+        "sold": []
       }
     },
     "Narrow Neck": {
-      "2026-10-23": {
-        "sold": []
-      },
       "2026-10-24": {
         "sold": [
           {
@@ -386,6 +416,9 @@
             "company": "Unknown"
           }
         ]
+      },
+      "2026-11-06": {
+        "sold": []
       }
     }
   }
