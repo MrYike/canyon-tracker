@@ -1,10 +1,7 @@
 {
-  "updated": "2026-10-24 22:25",
+  "updated": "2026-10-25 01:01",
   "data": {
     "Empress": {
-      "2026-10-24": {
-        "sold": []
-      },
       "2026-10-25": {
         "sold": [
           {
@@ -189,12 +186,45 @@
             "company": "High n Wild Pty Ltd"
           }
         ]
+      },
+      "2026-11-07": {
+        "sold": [
+          {
+            "time": "2026-11-07T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-11-07T11:00:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-11-07T12:30:00",
+            "company": "Roam Adventures and Training"
+          },
+          {
+            "time": "2026-11-07T13:00:00",
+            "company": "High n Wild Pty Ltd"
+          },
+          {
+            "time": "2026-11-07T13:30:00",
+            "company": "World Expeditions Travel Group"
+          },
+          {
+            "time": "2026-11-07T14:00:00",
+            "company": "World Expeditions Travel Group"
+          },
+          {
+            "time": "2026-11-07T14:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-11-07T15:00:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
       }
     },
     "Grand Canyon": {
-      "2026-10-24": {
-        "sold": []
-      },
       "2026-10-25": {
         "sold": []
       },
@@ -250,12 +280,17 @@
       },
       "2026-11-06": {
         "sold": []
+      },
+      "2026-11-07": {
+        "sold": [
+          {
+            "time": "2026-11-07T12:30:00",
+            "company": "World Expeditions Travel Group"
+          }
+        ]
       }
     },
     "Narrow Neck": {
-      "2026-10-24": {
-        "sold": []
-      },
       "2026-10-25": {
         "sold": [
           {
@@ -388,6 +423,14 @@
       },
       "2026-11-06": {
         "sold": []
+      },
+      "2026-11-07": {
+        "sold": [
+          {
+            "time": "2026-11-07T09:00:00",
+            "company": "High n Wild Pty Ltd"
+          }
+        ]
       }
     }
   }
