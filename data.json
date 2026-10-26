@@ -1,15 +1,21 @@
 {
-  "updated": "2026-10-25 21:39",
+  "updated": "2026-10-26 00:05",
   "data": {
     "Empress": {
-      "2026-10-25": {
-        "sold": []
-      },
       "2026-10-26": {
-        "sold": []
+        "sold": [
+          {
+            "time": "2026-10-26T12:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
       },
       "2026-10-27": {
         "sold": [
+          {
+            "time": "2026-10-27T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
           {
             "time": "2026-10-27T12:30:00",
             "company": "Sydney Canyon Adventures Pty Ltd"
@@ -123,6 +129,34 @@
           {
             "time": "2026-11-05T14:00:00",
             "company": "World Expeditions Travel Group"
+          },
+          {
+            "time": "2026-11-05T14:30:00",
+            "company": "Unknown"
+          },
+          {
+            "time": "2026-11-05T15:00:00",
+            "company": "Unknown"
+          },
+          {
+            "time": "2026-11-05T15:30:00",
+            "company": "Unknown"
+          },
+          {
+            "time": "2026-11-05T16:00:00",
+            "company": "Unknown"
+          },
+          {
+            "time": "2026-11-05T16:30:00",
+            "company": "Unknown"
+          },
+          {
+            "time": "2026-11-05T17:00:00",
+            "company": "Unknown"
+          },
+          {
+            "time": "2026-11-05T17:30:00",
+            "company": "Unknown"
           }
         ]
       },
@@ -197,12 +231,21 @@
             "company": "Sydney Canyon Adventures Pty Ltd"
           }
         ]
+      },
+      "2026-11-08": {
+        "sold": [
+          {
+            "time": "2026-11-08T10:00:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-11-08T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
       }
     },
     "Grand Canyon": {
-      "2026-10-25": {
-        "sold": []
-      },
       "2026-10-26": {
         "sold": []
       },
@@ -251,7 +294,44 @@
         ]
       },
       "2026-11-05": {
-        "sold": []
+        "sold": [
+          {
+            "time": "2026-11-05T08:00:00",
+            "company": "Unknown"
+          },
+          {
+            "time": "2026-11-05T08:30:00",
+            "company": "Unknown"
+          },
+          {
+            "time": "2026-11-05T09:00:00",
+            "company": "Unknown"
+          },
+          {
+            "time": "2026-11-05T09:30:00",
+            "company": "Unknown"
+          },
+          {
+            "time": "2026-11-05T10:00:00",
+            "company": "Unknown"
+          },
+          {
+            "time": "2026-11-05T10:30:00",
+            "company": "Unknown"
+          },
+          {
+            "time": "2026-11-05T11:00:00",
+            "company": "Unknown"
+          },
+          {
+            "time": "2026-11-05T11:30:00",
+            "company": "Unknown"
+          },
+          {
+            "time": "2026-11-05T12:00:00",
+            "company": "Unknown"
+          }
+        ]
       },
       "2026-11-06": {
         "sold": []
@@ -263,12 +343,12 @@
             "company": "World Expeditions Travel Group"
           }
         ]
+      },
+      "2026-11-08": {
+        "sold": []
       }
     },
     "Narrow Neck": {
-      "2026-10-25": {
-        "sold": []
-      },
       "2026-10-26": {
         "sold": []
       },
@@ -401,6 +481,9 @@
             "company": "High n Wild Pty Ltd"
           }
         ]
+      },
+      "2026-11-08": {
+        "sold": []
       }
     }
   }
