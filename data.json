@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-27 02:01",
+  "updated": "2026-10-27 07:42",
   "data": {
     "Empress": {
       "2026-10-27": {
@@ -17,8 +17,20 @@
       "2026-10-28": {
         "sold": [
           {
+            "time": "2026-10-28T09:30:00",
+            "company": "5 Star Training and Consulting Pty Ltd"
+          },
+          {
+            "time": "2026-10-28T10:00:00",
+            "company": "5 Star Training and Consulting Pty Ltd"
+          },
+          {
             "time": "2026-10-28T13:00:00",
             "company": "High n Wild Pty Ltd"
+          },
+          {
+            "time": "2026-10-28T14:00:00",
+            "company": "5 Star Training and Consulting Pty Ltd"
           }
         ]
       },
