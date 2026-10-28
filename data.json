@@ -1,30 +1,9 @@
 {
-  "updated": "2026-10-28 12:34",
+  "updated": "2026-10-28 18:48",
   "data": {
     "Empress": {
       "2026-10-28": {
-        "sold": [
-          {
-            "time": "2026-10-28T09:30:00",
-            "company": "5 Star Training and Consulting Pty Ltd"
-          },
-          {
-            "time": "2026-10-28T10:00:00",
-            "company": "5 Star Training and Consulting Pty Ltd"
-          },
-          {
-            "time": "2026-10-28T12:30:00",
-            "company": "Sydney Canyon Adventures Pty Ltd"
-          },
-          {
-            "time": "2026-10-28T13:00:00",
-            "company": "High n Wild Pty Ltd"
-          },
-          {
-            "time": "2026-10-28T14:00:00",
-            "company": "5 Star Training and Consulting Pty Ltd"
-          }
-        ]
+        "sold": []
       },
       "2026-10-29": {
         "sold": [
@@ -391,16 +370,7 @@
     },
     "Narrow Neck": {
       "2026-10-28": {
-        "sold": [
-          {
-            "time": "2026-10-28T08:30:00",
-            "company": "Sydney Canyon Adventures Pty Ltd"
-          },
-          {
-            "time": "2026-10-28T09:00:00",
-            "company": "High n Wild Pty Ltd"
-          }
-        ]
+        "sold": []
       },
       "2026-10-29": {
         "sold": [
