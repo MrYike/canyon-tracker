@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-01 05:32",
+  "updated": "2026-11-01 13:04",
   "data": {
     "Empress": {
       "2026-11-01": {
@@ -263,18 +263,23 @@
     },
     "Grand Canyon": {
       "2026-11-01": {
+        "sold": []
+      },
+      "2026-11-02": {
         "sold": [
           {
-            "time": "2026-11-01T11:00:00",
+            "time": "2026-11-02T13:00:00",
             "company": "World Expeditions Travel Group"
           }
         ]
       },
-      "2026-11-02": {
-        "sold": []
-      },
       "2026-11-03": {
-        "sold": []
+        "sold": [
+          {
+            "time": "2026-11-03T12:30:00",
+            "company": "World Expeditions Travel Group"
+          }
+        ]
       },
       "2026-11-04": {
         "sold": [
@@ -392,12 +397,7 @@
     },
     "Narrow Neck": {
       "2026-11-01": {
-        "sold": [
-          {
-            "time": "2026-11-01T09:00:00",
-            "company": "High n Wild Pty Ltd"
-          }
-        ]
+        "sold": []
       },
       "2026-11-02": {
         "sold": []
