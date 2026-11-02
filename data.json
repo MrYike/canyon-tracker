@@ -1,14 +1,9 @@
 {
-  "updated": "2026-11-02 10:52",
+  "updated": "2026-11-02 20:46",
   "data": {
     "Empress": {
       "2026-11-02": {
-        "sold": [
-          {
-            "time": "2026-11-02T12:30:00",
-            "company": "Sydney Canyon Adventures Pty Ltd"
-          }
-        ]
+        "sold": []
       },
       "2026-11-03": {
         "sold": [
@@ -287,12 +282,7 @@
     },
     "Grand Canyon": {
       "2026-11-02": {
-        "sold": [
-          {
-            "time": "2026-11-02T13:00:00",
-            "company": "World Expeditions Travel Group"
-          }
-        ]
+        "sold": []
       },
       "2026-11-03": {
         "sold": [
@@ -445,12 +435,7 @@
     },
     "Narrow Neck": {
       "2026-11-02": {
-        "sold": [
-          {
-            "time": "2026-11-02T10:00:00",
-            "company": "Sydney Canyon Adventures Pty Ltd"
-          }
-        ]
+        "sold": []
       },
       "2026-11-03": {
         "sold": [
