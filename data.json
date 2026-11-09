@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-09 09:34",
+  "updated": "2026-11-09 20:38",
   "data": {
     "Empress": {
       "2026-11-09": {
@@ -185,32 +185,7 @@
     },
     "Grand Canyon": {
       "2026-11-09": {
-        "sold": [
-          {
-            "time": "2026-11-09T11:30:00",
-            "company": "World Expeditions Travel Group"
-          },
-          {
-            "time": "2026-11-09T12:00:00",
-            "company": "World Expeditions Travel Group"
-          },
-          {
-            "time": "2026-11-09T12:30:00",
-            "company": "World Expeditions Travel Group"
-          },
-          {
-            "time": "2026-11-09T13:00:00",
-            "company": "World Expeditions Travel Group"
-          },
-          {
-            "time": "2026-11-09T13:30:00",
-            "company": "World Expeditions Travel Group"
-          },
-          {
-            "time": "2026-11-09T14:00:00",
-            "company": "World Expeditions Travel Group"
-          }
-        ]
+        "sold": []
       },
       "2026-11-10": {
         "sold": []
