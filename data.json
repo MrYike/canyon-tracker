@@ -1,14 +1,9 @@
 {
-  "updated": "2026-11-10 12:26",
+  "updated": "2026-11-10 20:27",
   "data": {
     "Empress": {
       "2026-11-10": {
-        "sold": [
-          {
-            "time": "2026-11-10T13:00:00",
-            "company": "High n Wild Pty Ltd"
-          }
-        ]
+        "sold": []
       },
       "2026-11-11": {
         "sold": []
@@ -256,16 +251,7 @@
     },
     "Narrow Neck": {
       "2026-11-10": {
-        "sold": [
-          {
-            "time": "2026-11-10T09:00:00",
-            "company": "High n Wild Pty Ltd"
-          },
-          {
-            "time": "2026-11-10T13:00:00",
-            "company": "High n Wild Pty Ltd"
-          }
-        ]
+        "sold": []
       },
       "2026-11-11": {
         "sold": []
