@@ -1,10 +1,7 @@
 {
-  "updated": "2026-11-11 17:53",
+  "updated": "2026-11-12 00:25",
   "data": {
     "Empress": {
-      "2026-11-11": {
-        "sold": []
-      },
       "2026-11-12": {
         "sold": [
           {
@@ -14,11 +11,19 @@
           {
             "time": "2026-11-12T14:00:00",
             "company": "MyAdventure Group"
+          },
+          {
+            "time": "2026-11-12T14:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
           }
         ]
       },
       "2026-11-13": {
         "sold": [
+          {
+            "time": "2026-11-13T11:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
           {
             "time": "2026-11-13T12:30:00",
             "company": "High n Wild Pty Ltd"
@@ -190,12 +195,37 @@
             "company": "High n Wild Pty Ltd"
           }
         ]
+      },
+      "2026-11-25": {
+        "sold": [
+          {
+            "time": "2026-11-25T11:30:00",
+            "company": "MyAdventure Group"
+          },
+          {
+            "time": "2026-11-25T12:30:00",
+            "company": "MyAdventure Group"
+          },
+          {
+            "time": "2026-11-25T13:00:00",
+            "company": "MyAdventure Group"
+          },
+          {
+            "time": "2026-11-25T13:30:00",
+            "company": "World Expeditions Travel Group"
+          },
+          {
+            "time": "2026-11-25T14:00:00",
+            "company": "World Expeditions Travel Group"
+          },
+          {
+            "time": "2026-11-25T14:30:00",
+            "company": "MyAdventure Group"
+          }
+        ]
       }
     },
     "Grand Canyon": {
-      "2026-11-11": {
-        "sold": []
-      },
       "2026-11-12": {
         "sold": []
       },
@@ -252,12 +282,25 @@
       },
       "2026-11-24": {
         "sold": []
+      },
+      "2026-11-25": {
+        "sold": [
+          {
+            "time": "2026-11-25T12:30:00",
+            "company": "World Expeditions Travel Group"
+          },
+          {
+            "time": "2026-11-25T13:00:00",
+            "company": "World Expeditions Travel Group"
+          },
+          {
+            "time": "2026-11-25T13:30:00",
+            "company": "World Expeditions Travel Group"
+          }
+        ]
       }
     },
     "Narrow Neck": {
-      "2026-11-11": {
-        "sold": []
-      },
       "2026-11-12": {
         "sold": [
           {
@@ -384,6 +427,14 @@
           {
             "time": "2026-11-24T09:00:00",
             "company": "High n Wild Pty Ltd"
+          }
+        ]
+      },
+      "2026-11-25": {
+        "sold": [
+          {
+            "time": "2026-11-25T09:00:00",
+            "company": "MyAdventure Group"
           }
         ]
       }
