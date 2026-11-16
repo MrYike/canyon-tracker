@@ -1,10 +1,7 @@
 {
-  "updated": "2026-11-15 21:39",
+  "updated": "2026-11-16 01:47",
   "data": {
     "Empress": {
-      "2026-11-15": {
-        "sold": []
-      },
       "2026-11-16": {
         "sold": [
           {
@@ -22,10 +19,20 @@
         ]
       },
       "2026-11-17": {
-        "sold": []
+        "sold": [
+          {
+            "time": "2026-11-17T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
       },
       "2026-11-18": {
-        "sold": []
+        "sold": [
+          {
+            "time": "2026-11-18T12:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
       },
       "2026-11-19": {
         "sold": [
@@ -45,6 +52,10 @@
       },
       "2026-11-20": {
         "sold": [
+          {
+            "time": "2026-11-20T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
           {
             "time": "2026-11-20T13:00:00",
             "company": "High n Wild Pty Ltd"
@@ -182,6 +193,10 @@
       "2026-11-28": {
         "sold": [
           {
+            "time": "2026-11-28T09:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
             "time": "2026-11-28T10:30:00",
             "company": "Sydney Canyon Adventures Pty Ltd"
           },
@@ -206,12 +221,25 @@
             "company": "Sydney Canyon Adventures Pty Ltd"
           }
         ]
+      },
+      "2026-11-29": {
+        "sold": [
+          {
+            "time": "2026-11-29T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-11-29T13:00:00",
+            "company": "High n Wild Pty Ltd"
+          },
+          {
+            "time": "2026-11-29T14:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
       }
     },
     "Grand Canyon": {
-      "2026-11-15": {
-        "sold": []
-      },
       "2026-11-16": {
         "sold": []
       },
@@ -234,7 +262,12 @@
         ]
       },
       "2026-11-20": {
-        "sold": []
+        "sold": [
+          {
+            "time": "2026-11-20T08:30:00",
+            "company": "Cliff Line Adventures Pty Ltd"
+          }
+        ]
       },
       "2026-11-21": {
         "sold": [
@@ -259,6 +292,10 @@
       },
       "2026-11-25": {
         "sold": [
+          {
+            "time": "2026-11-25T09:00:00",
+            "company": "Cliff Line Adventures Pty Ltd"
+          },
           {
             "time": "2026-11-25T12:30:00",
             "company": "World Expeditions Travel Group"
@@ -294,12 +331,12 @@
       },
       "2026-11-28": {
         "sold": []
+      },
+      "2026-11-29": {
+        "sold": []
       }
     },
     "Narrow Neck": {
-      "2026-11-15": {
-        "sold": []
-      },
       "2026-11-16": {
         "sold": [
           {
@@ -316,7 +353,12 @@
         "sold": []
       },
       "2026-11-18": {
-        "sold": []
+        "sold": [
+          {
+            "time": "2026-11-18T08:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
       },
       "2026-11-19": {
         "sold": [
@@ -343,6 +385,10 @@
           {
             "time": "2026-11-21T08:00:00",
             "company": "High n Wild Pty Ltd"
+          },
+          {
+            "time": "2026-11-21T08:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
           },
           {
             "time": "2026-11-21T09:00:00",
@@ -416,6 +462,18 @@
         "sold": [
           {
             "time": "2026-11-28T08:00:00",
+            "company": "High n Wild Pty Ltd"
+          },
+          {
+            "time": "2026-11-28T08:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
+      },
+      "2026-11-29": {
+        "sold": [
+          {
+            "time": "2026-11-29T09:00:00",
             "company": "High n Wild Pty Ltd"
           }
         ]
