@@ -1,15 +1,20 @@
 {
-  "updated": "2026-11-18 21:20",
+  "updated": "2026-11-19 03:06",
   "data": {
     "Empress": {
-      "2026-11-18": {
-        "sold": []
-      },
       "2026-11-19": {
         "sold": [
           {
             "time": "2026-11-19T11:30:00",
             "company": "High n Wild Pty Ltd"
+          },
+          {
+            "time": "2026-11-19T14:00:00",
+            "company": "MyAdventure Group"
+          },
+          {
+            "time": "2026-11-19T14:30:00",
+            "company": "MyAdventure Group"
           }
         ]
       },
@@ -232,12 +237,17 @@
             "company": "High n Wild Pty Ltd"
           }
         ]
+      },
+      "2026-12-02": {
+        "sold": [
+          {
+            "time": "2026-12-02T13:00:00",
+            "company": "High n Wild Pty Ltd"
+          }
+        ]
       }
     },
     "Grand Canyon": {
-      "2026-11-18": {
-        "sold": []
-      },
       "2026-11-19": {
         "sold": [
           {
@@ -325,12 +335,12 @@
       },
       "2026-12-01": {
         "sold": []
+      },
+      "2026-12-02": {
+        "sold": []
       }
     },
     "Narrow Neck": {
-      "2026-11-18": {
-        "sold": []
-      },
       "2026-11-19": {
         "sold": [
           {
@@ -452,6 +462,14 @@
         "sold": [
           {
             "time": "2026-12-01T09:00:00",
+            "company": "High n Wild Pty Ltd"
+          }
+        ]
+      },
+      "2026-12-02": {
+        "sold": [
+          {
+            "time": "2026-12-02T09:00:00",
             "company": "High n Wild Pty Ltd"
           }
         ]
