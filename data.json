@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-23 00:45",
+  "updated": "2026-11-23 08:52",
   "data": {
     "Empress": {
       "2026-11-23": {
@@ -167,6 +167,10 @@
           {
             "time": "2026-12-02T14:00:00",
             "company": "Australian School of Mountaineering"
+          },
+          {
+            "time": "2026-12-02T14:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
           }
         ]
       },
@@ -247,7 +251,20 @@
         "sold": []
       },
       "2026-11-24": {
-        "sold": []
+        "sold": [
+          {
+            "time": "2026-11-24T10:30:00",
+            "company": "World Expeditions Travel Group"
+          },
+          {
+            "time": "2026-11-24T11:00:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
+            "time": "2026-11-24T11:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          }
+        ]
       },
       "2026-11-25": {
         "sold": [
