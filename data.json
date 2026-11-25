@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-25 02:11",
+  "updated": "2026-11-25 12:30",
   "data": {
     "Empress": {
       "2026-11-25": {
@@ -59,6 +59,10 @@
           {
             "time": "2026-11-27T13:30:00",
             "company": "World Expeditions Travel Group"
+          },
+          {
+            "time": "2026-11-27T14:00:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
           }
         ]
       },
@@ -105,6 +109,10 @@
             "company": "High n Wild Pty Ltd"
           },
           {
+            "time": "2026-11-29T13:30:00",
+            "company": "World Expeditions Travel Group"
+          },
+          {
             "time": "2026-11-29T14:30:00",
             "company": "Sydney Canyon Adventures Pty Ltd"
           }
@@ -137,6 +145,10 @@
       "2026-12-01": {
         "sold": [
           {
+            "time": "2026-12-01T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
+          {
             "time": "2026-12-01T13:00:00",
             "company": "High n Wild Pty Ltd"
           },
@@ -148,6 +160,10 @@
       },
       "2026-12-02": {
         "sold": [
+          {
+            "time": "2026-12-02T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
+          },
           {
             "time": "2026-12-02T13:00:00",
             "company": "High n Wild Pty Ltd"
@@ -175,6 +191,10 @@
           {
             "time": "2026-12-03T09:30:00",
             "company": "Keltus Pty Ltd"
+          },
+          {
+            "time": "2026-12-03T10:30:00",
+            "company": "Sydney Canyon Adventures Pty Ltd"
           },
           {
             "time": "2026-12-03T13:00:00",
@@ -292,6 +312,10 @@
           {
             "time": "2026-11-26T11:00:00",
             "company": "World Expeditions Travel Group"
+          },
+          {
+            "time": "2026-11-26T11:30:00",
+            "company": "World Expeditions Travel Group"
           }
         ]
       },
@@ -299,7 +323,12 @@
         "sold": []
       },
       "2026-11-28": {
-        "sold": []
+        "sold": [
+          {
+            "time": "2026-11-28T12:30:00",
+            "company": "World Expeditions Travel Group"
+          }
+        ]
       },
       "2026-11-29": {
         "sold": []
@@ -356,8 +385,16 @@
       "2026-11-26": {
         "sold": [
           {
+            "time": "2026-11-26T08:30:00",
+            "company": "World Expeditions Travel Group"
+          },
+          {
             "time": "2026-11-26T09:00:00",
             "company": "High n Wild Pty Ltd"
+          },
+          {
+            "time": "2026-11-26T09:30:00",
+            "company": "World Expeditions Travel Group"
           },
           {
             "time": "2026-11-26T13:00:00",
