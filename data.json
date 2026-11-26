@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-26 14:57",
+  "updated": "2026-11-26 23:42",
   "data": {
     "Empress": {
       "2026-11-26": {
@@ -213,31 +213,26 @@
         ]
       },
       "2026-12-07": {
-        "sold": [
-          {
-            "time": "2026-12-07T08:00:00",
-            "company": "Unknown"
-          },
-          {
-            "time": "2026-12-07T08:30:00",
-            "company": "Unknown"
-          },
-          {
-            "time": "2026-12-07T09:00:00",
-            "company": "Unknown"
-          },
-          {
-            "time": "2026-12-07T09:30:00",
-            "company": "Unknown"
-          },
-          {
-            "time": "2026-12-07T11:30:00",
-            "company": "Unknown"
-          }
-        ]
+        "sold": []
       },
       "2026-12-08": {
         "sold": [
+          {
+            "time": "2026-12-08T08:00:00",
+            "company": "Unknown"
+          },
+          {
+            "time": "2026-12-08T08:30:00",
+            "company": "Unknown"
+          },
+          {
+            "time": "2026-12-08T09:00:00",
+            "company": "Unknown"
+          },
+          {
+            "time": "2026-12-08T11:30:00",
+            "company": "Unknown"
+          },
           {
             "time": "2026-12-08T13:00:00",
             "company": "High n Wild Pty Ltd"
