@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-28 01:27",
+  "updated": "2026-11-28 10:06",
   "data": {
     "Empress": {
       "2026-11-28": {
@@ -139,7 +139,16 @@
         ]
       },
       "2026-12-04": {
-        "sold": []
+        "sold": [
+          {
+            "time": "2026-12-04T09:30:00",
+            "company": "5 Star Training and Consulting Pty Ltd"
+          },
+          {
+            "time": "2026-12-04T10:00:00",
+            "company": "5 Star Training and Consulting Pty Ltd"
+          }
+        ]
       },
       "2026-12-05": {
         "sold": [
